@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(path="/api/workout")
+@RequestMapping(path="/api/workouts")
 public class WorkoutController {
     @Autowired
     private WorkoutRepository workoutRepository;
@@ -24,10 +24,17 @@ public class WorkoutController {
     @Autowired
     private RoutineRepository routineRepository;
 
+    static private class GetWorkoutsResponse {
+        public Iterable<Workout> workouts;
+        public GetWorkoutsResponse(Iterable<Workout> workouts) {
+            this.workouts = workouts;
+        }
+    }
+
     @GetMapping
-    public @ResponseBody Iterable<Workout> getWorkouts(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public @ResponseBody GetWorkoutsResponse getWorkouts(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         List<Workout> workouts = workoutRepository.findByDate(date);
-        if(!workouts.isEmpty()) return workouts;
+        if(!workouts.isEmpty()) return new GetWorkoutsResponse(workouts);
 
         // workout for given day is non-existent
         // make new workouts
@@ -35,6 +42,6 @@ public class WorkoutController {
         List<Routine> routines = routineRepository.findByDayOfWeek(dayOfWeek);
         workouts = routines.stream().map(routine -> new Workout(routine.getExercise(), date)).collect(Collectors.toList());
         workoutRepository.saveAll(workouts);
-        return workouts;
+        return new GetWorkoutsResponse(workouts);
     }
 }
