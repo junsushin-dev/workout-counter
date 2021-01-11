@@ -1,7 +1,5 @@
 package com.example.workoutcounter;
 
-import org.apache.tomcat.jni.Local;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -16,15 +14,17 @@ public class Workout {
 //    private Integer userId;
 
     @ManyToOne
-    @JoinColumn(name = "routine_id")
-    private Routine routine;
+    @JoinColumn(name = "exercise_id")
+    private Exercise exercise;
 
     private Integer done;
 
     private LocalDate date;
 
-    public Workout(Routine routine, LocalDate date) {
-        this.routine = routine;
+    public Workout() {}
+
+    public Workout(Exercise exercise, LocalDate date) {
+        this.exercise = exercise;
         this.date = date;
         this.done = 0;
     }
@@ -45,12 +45,12 @@ public class Workout {
         this.done = done;
     }
 
-    public Routine getRoutine() {
-        return routine;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setRoutine(Routine routine) {
-        this.routine = routine;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
     public LocalDate getDate() {

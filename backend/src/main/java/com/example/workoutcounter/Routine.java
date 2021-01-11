@@ -1,21 +1,22 @@
 package com.example.workoutcounter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Routine {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-//    private Integer user_id;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "exercise_id")
+    private Exercise exercise;
 
-    private Integer count;
+    private Integer dayOfWeek;
 
     public Integer getId() {
         return id;
@@ -25,21 +26,19 @@ public class Routine {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getDayOfWeek() {
+        return dayOfWeek;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setDayOfWeek(Integer dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 }
-
-
