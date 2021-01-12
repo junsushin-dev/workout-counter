@@ -7,6 +7,7 @@ import { IWorkout, getTodayWorkouts } from './services';
 function Daily() {
   const titleText = "Today's Workout";
   const countOffset = 5;
+  const [date, setDate] = useState(new Date());
   const [workouts, setWorkouts] = useState<IWorkout[]>([]);
 
   useEffect(() => {
@@ -18,13 +19,13 @@ function Daily() {
 
   return (
     <Box display='flex' flexDirection='column'>
-      <DateNav />
+      <DateNav date={date} setDate={setDate} />
       <Typography>{titleText}</Typography>
       <Box p={2}>
         <Grid container spacing={2}>
           {workouts.map((workout) => (
             <Grid key={workout.exercise.name} item xs={12}>
-              <Workout workout={workout} offset={countOffset}/>
+              <Workout workout={workout} date={date} offset={countOffset}/>
             </Grid>
           ))}
         </Grid>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Done as DoneIcon, DirectionsRun as InProgressIcon } from '@material-ui/icons';
-import { IWorkout } from './services';
+import { IWorkout, updateDoneCount } from './services';
 
 const useStyles = makeStyles({
   progressBar: {
@@ -11,12 +11,13 @@ const useStyles = makeStyles({
 });
 
 interface IProps {
+  date: Date;
   workout: IWorkout;
   offset: number;
 }
 
 function Workout(props: IProps) {
-  const { workout, offset } = props;
+  const { date, workout, offset } = props;
   const { exercise: { name, count: targetCount }, done } = workout;
   const classes = useStyles();
   const [doneCount, setDoneCount] = useState(done);
@@ -26,7 +27,9 @@ function Workout(props: IProps) {
 
   const handleProgressBarClick = () => {
     if(doneCount >= targetCount) return;
-    setDoneCount(prevCount => Math.min(prevCount + offset, targetCount));
+    const newCount = doneCount + offset;
+    setDoneCount(Math.min(newCount, targetCount));
+    updateDoneCount(date, name, newCount);
   };
 
   return (
