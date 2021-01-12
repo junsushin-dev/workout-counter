@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Done as DoneIcon, DirectionsRun as InProgressIcon } from '@material-ui/icons';
+import { IWorkout } from './services';
 
 const useStyles = makeStyles({
   progressBar: {
@@ -10,15 +11,15 @@ const useStyles = makeStyles({
 });
 
 interface IProps {
-  name: string;
-  targetCount: number;
+  workout: IWorkout;
   offset: number;
 }
 
 function Workout(props: IProps) {
-  const { name, targetCount, offset } = props;
+  const { workout, offset } = props;
+  const { exercise: { name, count: targetCount }, done } = workout;
   const classes = useStyles();
-  const [doneCount, setDoneCount] = useState(0);
+  const [doneCount, setDoneCount] = useState(done);
   const isFinished = doneCount === targetCount;
 
   const progressText = `${doneCount} / ${targetCount}`;
