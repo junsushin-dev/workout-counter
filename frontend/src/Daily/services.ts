@@ -1,3 +1,5 @@
+const MINUTE_MILLISECS = 60 * 1000;
+
 export interface IWorkout {
   id: number;
   exercise: {
@@ -9,9 +11,9 @@ export interface IWorkout {
   date: string;
 }
 
-const getDateString = (date: Date):string => date.toISOString().split('T')[0];
+export const getDateString = (date: Date):string => new Date(date.getTime() - date.getTimezoneOffset() * MINUTE_MILLISECS).toISOString().split('T')[0];
 
-const getTodayString = ():string => getDateString(new Date());
+export const getTodayString = ():string => getDateString(new Date());
 
 export const getTodayWorkouts = async ():Promise<IWorkout[]> => {
   const res = await fetch(`/api/workouts?date=${getTodayString()}`, {
