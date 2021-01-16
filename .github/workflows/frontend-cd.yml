@@ -55,6 +55,4 @@ jobs:
         run: yarn build
 
       - name: Sync build files to server
-        run: rsync -avz ./build/ develop:/home/$SSH_USER/www/data
-        env:
-          SSH_USER: ${{ secrets.PROD_USERNAME }}
+        run: rsync -avz ./build/ develop:~/www/data
