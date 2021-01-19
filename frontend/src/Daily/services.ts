@@ -15,8 +15,8 @@ export const getDateString = (date: Date):string => new Date(date.getTime() - da
 
 export const getTodayString = ():string => getDateString(new Date());
 
-export const getTodayWorkouts = async ():Promise<IWorkout[]> => {
-  const res = await fetch(`/api/workouts?date=${getTodayString()}`, {
+export const getWorkouts = async (date: Date):Promise<IWorkout[]> => {
+  const res = await fetch(`/api/workouts?date=${getDateString(date)}`, {
     headers: {
       'Accept': 'application/json',
     },
