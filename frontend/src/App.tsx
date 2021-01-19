@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RecoilRoot } from 'recoil';
 import './App.css';
 
 import { AppBar, Tabs, Tab } from '@material-ui/core';
@@ -13,17 +14,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <AppBar position="static">
-        <Tabs value={currTab} onChange={handleChange}>
-          <Tab label="Daily" />
-          <Tab label="Monthly" />
-          <Tab label="Routines" />
-          <Tab label="Settings" />
-        </Tabs>
-      </AppBar>
-      <Daily />
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <AppBar position="static">
+          <Tabs value={currTab} onChange={handleChange}>
+            <Tab label="Daily" />
+            <Tab label="Monthly" />
+            <Tab label="Routines" />
+            <Tab label="Settings" />
+          </Tabs>
+        </AppBar>
+        <Daily />
+      </div>
+    </RecoilRoot>
   );
 }
 
