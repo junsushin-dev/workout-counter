@@ -1,10 +1,9 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import './App.css';
 
 import { AppBar, Tabs, Tab } from '@material-ui/core';
 import Daily from './Daily';
-import CenteredProgress from './common/CenteredProgress';
 
 function App() {
 
@@ -25,9 +24,7 @@ function App() {
               <Tab label="Settings" />
             </Tabs>
           </AppBar>
-          <Suspense fallback={<CenteredProgress />}>
-            <Daily />
-          </Suspense>
+          <Daily />
         </div>
     </RecoilRoot>
   );
