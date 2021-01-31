@@ -1,4 +1,5 @@
 import { atom, selector } from 'recoil';
+import { IWorkout } from './types';
 import { getWorkouts } from './services';
 
 const dateState = atom({
