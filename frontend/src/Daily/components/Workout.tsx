@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Box, Typography, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Done as DoneIcon, DirectionsRun as InProgressIcon } from '@material-ui/icons';
-import { IWorkout } from './types';
-import { updateDoneCount } from './services';
+import { IWorkout } from '../types';
+import { updateDoneCount } from '../services';
 
 const useStyles = makeStyles({
   fadeInOutContainer: {

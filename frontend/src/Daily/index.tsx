@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Box, Typography } from '@material-ui/core';
-import DateNav from './DateNav';
-import WorkoutList from './WorkoutList';
+import DateNav from './components/DateNav';
+import WorkoutList from './components/WorkoutList';
 import CenteredProgress from '../common/CenteredProgress';
 
 function Daily() {
