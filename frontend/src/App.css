@@ -11,3 +11,12 @@ body,
   display: flex;
   flex-direction: column;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

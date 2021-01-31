@@ -3,8 +3,12 @@ import { Box, Typography, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Done as DoneIcon, DirectionsRun as InProgressIcon } from '@material-ui/icons';
 import { IWorkout } from './types';
+import { updateDoneCount } from './services';
 
 const useStyles = makeStyles({
+  fadeInOutContainer: {
+    animation: 'fadein 0.2s linear forwards',
+  },
   progressBar: {
     height: '30px',
   },
@@ -33,7 +37,7 @@ function Workout(props: IProps) {
   };
 
   return (
-    <Box>
+    <Box className={classes.fadeInOutContainer}>
       <Box display='flex' flexDirection='row' justifyContent='space-between'>
         <Box display='flex' flexDirection='row'>
           <Typography>{name}</Typography>
