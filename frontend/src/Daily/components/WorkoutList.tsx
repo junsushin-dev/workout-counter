@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { Grid } from '@material-ui/core';
 
 import Workout from './Workout';
@@ -7,7 +7,7 @@ import { dateState, getWorkoutsQuery } from '../states';
 import { getDateString } from '../services';
 
 function WorkoutList() {
-  const [date] = useRecoilState(dateState);
+  const date = useRecoilValue(dateState);
   const workouts = useRecoilValue(getWorkoutsQuery);
   
   return (
