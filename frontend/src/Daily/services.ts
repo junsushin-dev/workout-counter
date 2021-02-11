@@ -1,4 +1,4 @@
-import { IWorkout } from './types';
+import { IRoutine, IWorkout } from './types';
 
 const MINUTE_MILLISECS = 60 * 1000;
 const DAY_MILLISECS = 24 * 60 * MINUTE_MILLISECS;
@@ -59,4 +59,95 @@ export const updateDoneCount = async (date: Date, name: string, doneCount: numbe
   const updatedWorkouts = [...cachedWorkouts.slice(0, cachedIndex), updatedWorkout, ...cachedWorkouts.slice(cachedIndex + 1)];
   workoutsCache.set(dateString, updatedWorkouts);
   console.log(workoutsCache);
+}
+
+export const getRoutines = async (date: Date):Promise<IRoutine[]> => {
+  // stub
+  const sampleRoutines = [
+    {
+      id: 0,
+      name: 'Push Day',
+      exercises: [
+        {
+          id: 0,
+          name: 'Push-ups',
+          count: 50,
+        },
+        {
+          id: 1,
+          name: 'Military Press',
+          count: 50,
+        },
+        {
+          id: 2,
+          name: 'Lunges',
+          count: 50,
+        }
+      ],
+    },
+    {
+      id: 1,
+      name: 'Pull Day',
+      exercises: [
+        {
+          id: 3,
+          name: 'Pull-ups',
+          count: 50,
+        },
+        {
+          id: 4,
+          name: 'Dips',
+          count: 50,
+        },
+        {
+          id: 5,
+          name: 'Deadlifts',
+          count: 50,
+        }
+      ],
+    },
+    {
+      id: 2,
+      name: 'Pull Day',
+      exercises: [
+        {
+          id: 3,
+          name: 'Pull-ups',
+          count: 50,
+        },
+        {
+          id: 4,
+          name: 'Dips',
+          count: 50,
+        },
+        {
+          id: 5,
+          name: 'Deadlifts',
+          count: 50,
+        }
+      ],
+    },
+    {
+      id: 3,
+      name: 'Pull Day',
+      exercises: [
+        {
+          id: 3,
+          name: 'Pull-ups',
+          count: 50,
+        },
+        {
+          id: 4,
+          name: 'Dips',
+          count: 50,
+        },
+        {
+          id: 5,
+          name: 'Deadlifts',
+          count: 50,
+        }
+      ],
+    }
+  ];
+  return sampleRoutines;
 }
