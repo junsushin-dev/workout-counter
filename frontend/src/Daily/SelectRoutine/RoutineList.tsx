@@ -11,7 +11,7 @@ function RoutineList() {
     <Box>
       <Grid container direction='column' spacing={2}>
         {routines.map((routine) => 
-        <Grid item>
+        <Grid item key={routine.id}>
           <RoutineItem routine={routine} />
         </Grid>)}
       </Grid>

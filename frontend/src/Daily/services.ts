@@ -61,7 +61,7 @@ export const updateDoneCount = async (date: Date, name: string, doneCount: numbe
   console.log(workoutsCache);
 }
 
-export const getRoutines = async (date: Date):Promise<IRoutine[]> => {
+export const getRoutines = async ():Promise<IRoutine[]> => {
   // stub
   const sampleRoutines = [
     {

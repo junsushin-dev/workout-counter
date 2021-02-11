@@ -18,9 +18,8 @@ const getWorkoutsQuery = selector<IWorkout[]>({
 
 const getRoutinesQuery = selector<IRoutine[]>({
   key: 'Routines',
-  get: async ({get}) => {
-    const date = get(dateState);
-    const routines = await getRoutines(date);
+  get: async () => {
+    const routines = await getRoutines();
     return routines;
   },
 });
