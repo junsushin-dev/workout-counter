@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RecoilRoot } from 'recoil';
 import './App.css';
+import 'fontsource-roboto';
 
 import { AppBar, Tabs, Tab } from '@material-ui/core';
 import Daily from './Daily';
