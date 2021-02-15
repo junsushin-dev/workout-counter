@@ -1,4 +1,4 @@
-import { IRoutine, IWorkout } from './types';
+import { IRoutine, IWorkout, IExercise } from './types';
 
 const MINUTE_MILLISECS = 60 * 1000;
 const DAY_MILLISECS = 24 * 60 * MINUTE_MILLISECS;
@@ -150,4 +150,21 @@ export const getRoutines = async ():Promise<IRoutine[]> => {
     }
   ];
   return sampleRoutines;
+}
+
+const createWorkoutByExercise = (date: Date, exercise: IExercise): IWorkout => {
+  const dateString = getDateString(date);
+  const workout: IWorkout = {
+    id: exercise.id,
+    exercise,
+    done: 0,
+    date: dateString,
+  }
+  return workout;
+}
+
+export const createWorkoutsByRoutine = async (date: Date, routine: IRoutine): Promise<IWorkout[]> => {
+  // stub
+  const workouts: IWorkout[] = routine.exercises.map((exercise) => createWorkoutByExercise(date, exercise));
+  return workouts;
 }
