@@ -1,5 +1,12 @@
 import { Exercise } from 'src/exercises/exercise.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Workout {
@@ -19,4 +26,12 @@ export class Workout {
 
   @Column({ type: 'date' })
   date: Date;
+
+  @Column()
+  @CreateDateColumn()
+  created_at: Date;
+
+  @Column()
+  @UpdateDateColumn()
+  updated_at: Date;
 }
