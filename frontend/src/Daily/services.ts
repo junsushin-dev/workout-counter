@@ -13,6 +13,9 @@ const updateWorkoutsCache = async (date: Date):Promise<void> => {
   const dateString = getDateString(date);
   if(workoutsCache.has(dateString)) return;
   const workouts = await getWorkoutsByDateString(dateString);
+  if(!workouts) {
+    return;
+  }
   workoutsCache.set(dateString, workouts);
 }
 
@@ -29,12 +32,15 @@ export const getWorkouts = async (date: Date):Promise<IWorkout[]> => {
   return workoutsCache.get(dateString);
 }
 
-export const getWorkoutsByDateString = async (dateString: String): Promise<IWorkout[]> => {
+export const getWorkoutsByDateString = async (dateString: String): Promise<IWorkout[] | null> => {
   const res = await fetch(`/api/workouts?date=${dateString}`, {
     headers: {
       'Accept': 'application/json',
     },
   });
+  if(res.status === 404) {
+    return null;
+  }
   const { workouts } = await res.json();
   return workouts;
 }
