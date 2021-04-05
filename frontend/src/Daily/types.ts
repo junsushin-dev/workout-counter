@@ -13,6 +13,6 @@ export interface IRoutine {
 export interface IWorkout {
   id: number;
   exercise: IExercise;
-  done: number;
+  doneCount: number;
   date: string;
 }

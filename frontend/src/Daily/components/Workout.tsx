@@ -59,7 +59,7 @@ interface IProps {
 
 function Workout(props: IProps) {
   const { date, workout } = props;
-  const { exercise: { name, count: targetCount }, done } = workout;
+  const { exercise: { name, count: targetCount }, doneCount: done } = workout;
 
   const classes = useStyles();
   const [doneCount, setDoneCount] = useState(done);

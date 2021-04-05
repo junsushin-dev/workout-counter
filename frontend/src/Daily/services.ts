@@ -13,7 +13,7 @@ const updateWorkoutsCache = async (date: Date):Promise<void> => {
   const dateString = getDateString(date);
   if(workoutsCache.has(dateString)) return;
   const workouts = await getWorkoutsByDateString(dateString);
-  if(!workouts) {
+  if(workouts === undefined || workouts === null) {
     return;
   }
   workoutsCache.set(dateString, workouts);
@@ -41,7 +41,7 @@ export const getWorkoutsByDateString = async (dateString: String): Promise<IWork
   if(res.status === 404) {
     return null;
   }
-  const { workouts } = await res.json();
+  const workouts = await res.json();
   return workouts;
 }
 
