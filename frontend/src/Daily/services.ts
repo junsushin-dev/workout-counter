@@ -170,7 +170,8 @@ const createWorkoutByExercise = (date: Date, exercise: IExercise): IWorkout => {
 }
 
 export const createWorkoutsByRoutine = async (date: Date, routine: IRoutine): Promise<IWorkout[]> => {
-  // stub
+  const dateString = getDateString(date);
   const workouts: IWorkout[] = routine.exercises.map((exercise) => createWorkoutByExercise(date, exercise));
+  workoutsCache.set(dateString, workouts);
   return workouts;
 }
