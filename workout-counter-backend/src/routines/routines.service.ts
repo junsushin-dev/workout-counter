@@ -23,7 +23,7 @@ export class RoutinesService {
   }
 
   async findAll(): Promise<Routine[]> {
-    return this.routineRepository.find();
+    return this.routineRepository.find({ relations: ['exercises'] });
   }
 
   async findOne(id: string): Promise<Routine> {
