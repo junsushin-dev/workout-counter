@@ -5,6 +5,9 @@ import 'fontsource-roboto';
 
 import { AppBar, Tabs, Tab } from '@material-ui/core';
 import Daily from './Daily';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
 
@@ -15,7 +18,8 @@ function App() {
   }
 
   return (
-    <RecoilRoot>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
         <div className="App">
           <AppBar position="static">
             <Tabs value={currTab} onChange={handleChange}>
@@ -27,7 +31,8 @@ function App() {
           </AppBar>
           <Daily />
         </div>
-    </RecoilRoot>
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
 
