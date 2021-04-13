@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -14,14 +15,13 @@ export class Workout {
   id: number;
 
   @ManyToOne(() => Exercise)
+  @JoinColumn({ name: 'exercise_id' })
   exercise: Exercise;
 
   // @ManyToOne(() => User)
   // user: User;
 
-  @Column({
-    default: 0,
-  })
+  @Column({ default: 0, name: 'done_count'})
   doneCount: number;
 
   @Column({ type: 'date' })
