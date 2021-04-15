@@ -45,12 +45,10 @@ export const getWorkoutsByDateString = async (dateString: String): Promise<IWork
   return workouts;
 }
 
-export const updateDoneCount = async (date: Date, name: string, doneCount: number):Promise<void> => {
+export const updateDoneCount = async (id: number, date: Date, doneCount: number):Promise<void> => {
   const body = new URLSearchParams();
-  body.set('date', getDateString(date));
-  body.set('name', name);
-  body.set('done', doneCount.toString());
-  const res = await fetch('/api/workouts', {
+  body.set('count', doneCount.toString());
+  const res = await fetch(`/api/workouts/${id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json'
