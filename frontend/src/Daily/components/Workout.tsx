@@ -57,9 +57,8 @@ interface IProps {
   workout: IWorkout;
 }
 
-function Workout(props: IProps) {
-  const { date, workout } = props;
-  const { exercise: { name, count: targetCount }, doneCount: done } = workout;
+function Workout({ date, workout }: IProps) {
+  const { id, exercise: { name, count: targetCount }, doneCount: done } = workout;
 
   const classes = useStyles();
   const [doneCount, setDoneCount] = useState(done);
@@ -70,7 +69,7 @@ function Workout(props: IProps) {
   const handleArrowClick = (offset: number) => {
     const newCount = Math.min(Math.max(0, doneCount + offset), targetCount);
     setDoneCount(newCount);
-    updateDoneCount(date, name, newCount);
+    updateDoneCount(id, date, newCount);
   };
 
   return (
