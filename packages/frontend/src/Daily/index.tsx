@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Box, Typography } from '@material-ui/core';
 import DateNav from './components/DateNav';
 import CenteredProgress from '../common/CenteredProgress';
