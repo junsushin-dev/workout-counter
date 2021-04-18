@@ -6332,6 +6332,119 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@sentry/browser", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-browser-npm-6.2.5-d19b21e50d-f40d31abf5.zip/node_modules/@sentry/browser/",
+          "packageDependencies": [
+            ["@sentry/browser", "npm:6.2.5"],
+            ["@sentry/core", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["@sentry/utils", "npm:6.2.5"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/core", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-core-npm-6.2.5-9004fa9c23-609156dd00.zip/node_modules/@sentry/core/",
+          "packageDependencies": [
+            ["@sentry/core", "npm:6.2.5"],
+            ["@sentry/hub", "npm:6.2.5"],
+            ["@sentry/minimal", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["@sentry/utils", "npm:6.2.5"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/hub", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-hub-npm-6.2.5-14070fcd9f-60bc51afdd.zip/node_modules/@sentry/hub/",
+          "packageDependencies": [
+            ["@sentry/hub", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["@sentry/utils", "npm:6.2.5"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/minimal", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-minimal-npm-6.2.5-6170d5b019-038a7e9bd5.zip/node_modules/@sentry/minimal/",
+          "packageDependencies": [
+            ["@sentry/minimal", "npm:6.2.5"],
+            ["@sentry/hub", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/react", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-react-npm-6.2.5-6c6193cba9-5480b5746c.zip/node_modules/@sentry/react/",
+          "packageDependencies": [
+            ["@sentry/react", "npm:6.2.5"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.2.5", {
+          "packageLocation": "./.yarn/$$virtual/@sentry-react-virtual-827b412984/0/cache/@sentry-react-npm-6.2.5-6c6193cba9-5480b5746c.zip/node_modules/@sentry/react/",
+          "packageDependencies": [
+            ["@sentry/react", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.2.5"],
+            ["@sentry/browser", "npm:6.2.5"],
+            ["@sentry/minimal", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["@sentry/utils", "npm:6.2.5"],
+            ["@types/react", "npm:16.14.5"],
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["react", "npm:17.0.2"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/tracing", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-tracing-npm-6.2.5-6679add44d-335f175471.zip/node_modules/@sentry/tracing/",
+          "packageDependencies": [
+            ["@sentry/tracing", "npm:6.2.5"],
+            ["@sentry/hub", "npm:6.2.5"],
+            ["@sentry/minimal", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["@sentry/utils", "npm:6.2.5"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/types", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-types-npm-6.2.5-5a708d9b8d-d9c8c9182b.zip/node_modules/@sentry/types/",
+          "packageDependencies": [
+            ["@sentry/types", "npm:6.2.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@sentry/utils", [
+        ["npm:6.2.5", {
+          "packageLocation": "./.yarn/cache/@sentry-utils-npm-6.2.5-239784eafd-641a0c0e1a.zip/node_modules/@sentry/utils/",
+          "packageDependencies": [
+            ["@sentry/utils", "npm:6.2.5"],
+            ["@sentry/types", "npm:6.2.5"],
+            ["tslib", "npm:1.14.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@sinonjs/commons", [
         ["npm:1.8.3", {
           "packageLocation": "./.yarn/cache/@sinonjs-commons-npm-1.8.3-30cf78d93f-a7f3181512.zip/node_modules/@sinonjs/commons/",
@@ -14073,6 +14186,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["frontend", "workspace:packages/frontend"],
             ["@material-ui/core", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:4.11.3"],
             ["@material-ui/icons", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:4.11.2"],
+            ["@sentry/react", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.2.5"],
+            ["@sentry/tracing", "npm:6.2.5"],
             ["@testing-library/jest-dom", "npm:5.11.10"],
             ["@testing-library/react", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:11.2.6"],
             ["@testing-library/user-event", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:12.8.3"],
