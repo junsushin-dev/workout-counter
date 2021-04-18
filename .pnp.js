@@ -48,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["eslint", "npm:7.24.0"],
+            ["mysql2", "npm:2.2.5"],
             ["prettier", "npm:2.2.1"],
             ["typescript", "patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"]
           ],
@@ -12739,6 +12740,60 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.0.0", {
+          "packageLocation": "./.yarn/$$virtual/eslint-config-react-app-virtual-9115f749ef/0/cache/eslint-config-react-app-npm-6.0.0-c5908e735c-ab983e9a31.zip/node_modules/eslint-config-react-app/",
+          "packageDependencies": [
+            ["eslint-config-react-app", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.0.0"],
+            ["@types/babel-eslint", null],
+            ["@types/eslint", null],
+            ["@types/eslint-plugin-flowtype", null],
+            ["@types/eslint-plugin-import", null],
+            ["@types/eslint-plugin-jest", null],
+            ["@types/eslint-plugin-jsx-a11y", null],
+            ["@types/eslint-plugin-react", null],
+            ["@types/eslint-plugin-react-hooks", null],
+            ["@types/eslint-plugin-testing-library", null],
+            ["@types/typescript-eslint__eslint-plugin", null],
+            ["@types/typescript-eslint__parser", null],
+            ["@typescript-eslint/eslint-plugin", null],
+            ["@typescript-eslint/parser", null],
+            ["babel-eslint", null],
+            ["confusing-browser-globals", "npm:1.0.10"],
+            ["eslint", null],
+            ["eslint-plugin-flowtype", null],
+            ["eslint-plugin-import", null],
+            ["eslint-plugin-jest", null],
+            ["eslint-plugin-jsx-a11y", null],
+            ["eslint-plugin-react", null],
+            ["eslint-plugin-react-hooks", null],
+            ["eslint-plugin-testing-library", null]
+          ],
+          "packagePeers": [
+            "@types/babel-eslint",
+            "@types/eslint-plugin-flowtype",
+            "@types/eslint-plugin-import",
+            "@types/eslint-plugin-jest",
+            "@types/eslint-plugin-jsx-a11y",
+            "@types/eslint-plugin-react-hooks",
+            "@types/eslint-plugin-react",
+            "@types/eslint-plugin-testing-library",
+            "@types/eslint",
+            "@types/typescript-eslint__eslint-plugin",
+            "@types/typescript-eslint__parser",
+            "@typescript-eslint/eslint-plugin",
+            "@typescript-eslint/parser",
+            "babel-eslint",
+            "eslint-plugin-flowtype",
+            "eslint-plugin-import",
+            "eslint-plugin-jest",
+            "eslint-plugin-jsx-a11y",
+            "eslint-plugin-react-hooks",
+            "eslint-plugin-react",
+            "eslint-plugin-testing-library",
+            "eslint"
+          ],
+          "linkType": "HARD",
+        }],
         ["virtual:eae91e8c060f5af91769bb2f1ffe9168cb31fd68f622b98ab37a81b1988171b9d637bb26f755347f1ba03069b74f5f4926b5a98c2cb6280412877d4d59caeace#npm:6.0.0", {
           "packageLocation": "./.yarn/$$virtual/eslint-config-react-app-virtual-a9680162e7/0/cache/eslint-config-react-app-npm-6.0.0-c5908e735c-ab983e9a31.zip/node_modules/eslint-config-react-app/",
           "packageDependencies": [
@@ -14026,6 +14081,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:12.20.10"],
             ["@types/react", "npm:16.14.5"],
             ["@types/react-dom", "npm:16.9.12"],
+            ["eslint-config-react-app", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.0.0"],
             ["fontsource-roboto", "npm:4.0.0"],
             ["immer", "npm:8.0.4"],
             ["ini", "npm:1.3.8"],
@@ -14033,6 +14089,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:17.0.2"],
             ["react-query", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:3.13.10"],
+            ["react-refresh", "npm:0.10.0"],
             ["react-scripts", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:4.0.1"],
             ["recoil", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:0.1.3"],
             ["ts-jest", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:26.5.5"],
@@ -21019,6 +21076,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["react-refresh", [
+        ["npm:0.10.0", {
+          "packageLocation": "./.yarn/cache/react-refresh-npm-0.10.0-a406cf3a25-09a59d2732.zip/node_modules/react-refresh/",
+          "packageDependencies": [
+            ["react-refresh", "npm:0.10.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:0.8.3", {
           "packageLocation": "./.yarn/cache/react-refresh-npm-0.8.3-9b3fb3900b-38f06df8e0.zip/node_modules/react-refresh/",
           "packageDependencies": [
@@ -25466,6 +25530,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["workout-counter", "workspace:."],
             ["eslint", "npm:7.24.0"],
+            ["mysql2", "npm:2.2.5"],
             ["prettier", "npm:2.2.1"],
             ["typescript", "patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"]
           ],
