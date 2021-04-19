@@ -73,26 +73,26 @@ function Workout({ date, workout }: IProps) {
   };
 
   return (
-    <Box className={classes.fadeInOutContainer}>
-      <Box className={classes.headerBar}>
+    <div className={classes.fadeInOutContainer}>
+      <div className={classes.headerBar}>
         <Box display='flex' flexDirection='row'>
           <Typography>{name}</Typography>
           {isFinished ? <DoneIcon /> : <InProgressIcon />}
         </Box>
         <Typography>{progressText}</Typography>
-      </Box>
+      </div>
       <LinearProgress className={classes.progressBar} value={doneCount / targetCount * 100} variant='determinate'/>
-      <Box className={classes.buttonBar}>
-        <Box className={classes.buttonsContainer}>
+      <div className={classes.buttonBar}>
+        <div className={classes.buttonsContainer}>
           <FastRewindIcon onClick={() => handleArrowClick(FAST_REWIND_OFFSET)}/>
           <RewindIcon onClick={() => handleArrowClick(REWIND_OFFSET)}/>
-        </Box>
-        <Box className={classes.buttonsContainer}>
+        </div>
+        <div className={classes.buttonsContainer}>
           <ForwardIcon onClick={() => handleArrowClick(FORWARD_OFFSET)}/>
           <FastForwardIcon onClick={() => handleArrowClick(FAST_FORWARD_OFFSET)}/>
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   )
 }
 

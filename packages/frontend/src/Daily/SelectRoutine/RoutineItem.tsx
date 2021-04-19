@@ -1,9 +1,11 @@
+import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { Card, CardContent, Typography, styled } from '@material-ui/core'
 import { dateState } from '../states';
 import { IRoutine } from '../types';
 import ExerciseItem from './ExerciseItem';
-import { createWorkoutsByRoutine } from '../services';
+import { createWorkoutsByRoutine, getDateString } from '../services';
+import { useQueryClient } from 'react-query';
 
 const TextAlignLeftCardContent = styled(CardContent)({
   textAlign: 'left',
@@ -16,9 +18,11 @@ interface IProps {
 function RoutineItem({ routine }: IProps) {
   const date = useRecoilValue(dateState);
   const { name, exercises } = routine;
+  const queryClient = useQueryClient();
 
   const handleClick = async () => {
     await createWorkoutsByRoutine(date, routine);
+    queryClient.invalidateQueries(`workouts/${getDateString(date)}`);
   }
 
   return (
