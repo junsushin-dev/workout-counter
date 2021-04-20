@@ -9789,6 +9789,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["reflect-metadata", "npm:0.1.13"],
             ["rimraf", "npm:3.0.2"],
             ["rxjs", "npm:6.6.7"],
+            ["src", "link:./src::locator=backend%40workspace%3Apackages%2Fbackend"],
             ["supertest", "npm:6.1.3"],
             ["ts-jest", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:26.5.5"],
             ["ts-loader", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:8.1.0"],
@@ -22964,6 +22965,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sqlstring", "npm:2.3.2"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["src", [
+        ["link:./src::locator=backend%40workspace%3Apackages%2Fbackend", {
+          "packageLocation": "./packages/backend/src/",
+          "packageDependencies": [
+            ["src", "link:./src::locator=backend%40workspace%3Apackages%2Fbackend"]
+          ],
+          "linkType": "SOFT",
+          "discardFromLookup": true
         }]
       ]],
       ["sse-z", [
