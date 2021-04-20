@@ -5810,6 +5810,7 @@ __metadata:
     reflect-metadata: ^0.1.13
     rimraf: ^3.0.2
     rxjs: ^6.6.3
+    src: "link:./src"
     supertest: ^6.0.0
     ts-jest: ^26.4.3
     ts-loader: ^8.0.8
@@ -17262,6 +17263,12 @@ resolve@^2.0.0-next.3:
   checksum: 2389f9436973af0287061f202ced7a77e2b62c15667a44bf961340f93b74775c8f0f9dfe03193c2b0a0ff943b6419e2461a12c33f6dd0e62a67d8bb992d6c56e
   languageName: node
   linkType: hard
+
+"src@link:./src::locator=backend%40workspace%3Apackages%2Fbackend":
+  version: 0.0.0-use.local
+  resolution: "src@link:./src::locator=backend%40workspace%3Apackages%2Fbackend"
+  languageName: node
+  linkType: soft
 
 "sse-z@npm:0.3.0":
   version: 0.3.0
