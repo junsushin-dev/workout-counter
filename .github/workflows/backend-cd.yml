@@ -44,5 +44,5 @@ jobs:
         run: ssh master 'cd repos/workout-counter && git checkout master && git pull && yarn install'
 
       - name: Reload PM2
-        run: ssh master 'cd repos/workout-counter && pm2 start ecosystem.config.js'
+        run: ssh master 'cd repos/workout-counter/backend && sudo pm2 start ecosystem.config.js'
         
