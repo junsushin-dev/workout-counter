@@ -40,9 +40,12 @@ jobs:
           SSH_KEY: ${{ secrets.PROD_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.PROD_HOST }}
 
-      - name: Run Install & Build
-        run: ssh master 'cd repos/workout-counter && git checkout master && git pull && yarn install'
+      - name: Fetch Repos
+        run: ssh master 'cd repos/workout-counter && git fetch && git checkout master && git reset --hard origin/master'
+
+      - name: Run Install
+        run: ssh master 'cd repos/workout-counter && yarn install'
 
       - name: Reload PM2
-        run: ssh master 'cd repos/workout-counter/backend && sudo pm2 start ecosystem.config.js'
+        run: ssh master 'cd repos/workout-counter/packages/backend && sudo pm2 start ecosystem.config.js'
         
