@@ -1,11 +1,12 @@
+import { Card, CardContent, styled,Typography } from '@material-ui/core'
 import React from 'react';
+import { useQueryClient } from 'react-query';
 import { useRecoilValue } from 'recoil';
-import { Card, CardContent, Typography, styled } from '@material-ui/core'
+
+import { createWorkoutsByRoutine, getDateString } from '../services';
 import { dateState } from '../states';
 import { IRoutine } from '../types';
 import ExerciseItem from './ExerciseItem';
-import { createWorkoutsByRoutine, getDateString } from '../services';
-import { useQueryClient } from 'react-query';
 
 const TextAlignLeftCardContent = styled(CardContent)({
   textAlign: 'left',

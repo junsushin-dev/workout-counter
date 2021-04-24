@@ -1,8 +1,9 @@
+import { Box, Grid } from '@material-ui/core';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { Box, Grid } from '@material-ui/core';
-import RoutineItem from './RoutineItem';
+
 import { getRoutinesQuery } from '../states';
+import RoutineItem from './RoutineItem';
 
 function RoutineList() {
   const routines = useRecoilValue(getRoutinesQuery);

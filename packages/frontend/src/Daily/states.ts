@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil';
-import { IWorkout, IRoutine } from './types';
-import { getWorkouts, getRoutines } from './services';
+
+import { getRoutines,getWorkouts } from './services';
+import { IRoutine,IWorkout } from './types';
 
 const dateState = atom<Date>({
   key: 'dateState',
@@ -24,4 +25,4 @@ const getRoutinesQuery = selector<IRoutine[]>({
   },
 });
 
-export { dateState, getWorkoutsQuery, getRoutinesQuery };
+export { dateState, getRoutinesQuery,getWorkoutsQuery };

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Exercise } from 'src/exercises/exercise.entity';
 import { Repository } from 'typeorm';
+
 import { CreateWorkoutDTO } from './dto/create-workout.dto';
 import { Workout } from './workout.entity';
 

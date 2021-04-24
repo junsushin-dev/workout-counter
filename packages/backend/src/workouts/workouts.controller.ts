@@ -1,13 +1,14 @@
 import {
-  Controller,
-  Post,
   Body,
-  Get,
-  Query,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
 } from '@nestjs/common';
+
 import { CreateWorkoutDTO } from './dto/create-workout.dto';
 import { UpdateWorkoutDTO } from './dto/update-workout.dto';
 import { WorkoutsService } from './workouts.service';
