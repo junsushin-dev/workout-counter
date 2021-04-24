@@ -21,7 +21,7 @@ export class Workout {
   // @ManyToOne(() => User)
   // user: User;
 
-  @Column({ default: 0, name: 'done_count'})
+  @Column({ default: 0, name: 'done_count' })
   doneCount: number;
 
   @Column({ type: 'date' })
