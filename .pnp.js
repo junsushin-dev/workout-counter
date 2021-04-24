@@ -9922,6 +9922,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:7.24.0"],
             ["eslint-config-prettier", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:7.2.0"],
             ["eslint-plugin-prettier", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:3.4.0"],
+            ["eslint-plugin-simple-import-sort", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:7.0.0"],
             ["graphql", "npm:15.5.0"],
             ["graphql-tools", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:7.0.4"],
             ["jest", "npm:26.6.3"],
@@ -13730,6 +13731,41 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["eslint-plugin-simple-import-sort", [
+        ["npm:7.0.0", {
+          "packageLocation": "./.yarn/cache/eslint-plugin-simple-import-sort-npm-7.0.0-45d08a8927-51fc6b6752.zip/node_modules/eslint-plugin-simple-import-sort/",
+          "packageDependencies": [
+            ["eslint-plugin-simple-import-sort", "npm:7.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:7.0.0", {
+          "packageLocation": "./.yarn/$$virtual/eslint-plugin-simple-import-sort-virtual-37e6ff4801/0/cache/eslint-plugin-simple-import-sort-npm-7.0.0-45d08a8927-51fc6b6752.zip/node_modules/eslint-plugin-simple-import-sort/",
+          "packageDependencies": [
+            ["eslint-plugin-simple-import-sort", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:7.0.0"],
+            ["@types/eslint", null],
+            ["eslint", null]
+          ],
+          "packagePeers": [
+            "@types/eslint",
+            "eslint"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:7.0.0", {
+          "packageLocation": "./.yarn/$$virtual/eslint-plugin-simple-import-sort-virtual-5bb5019678/0/cache/eslint-plugin-simple-import-sort-npm-7.0.0-45d08a8927-51fc6b6752.zip/node_modules/eslint-plugin-simple-import-sort/",
+          "packageDependencies": [
+            ["eslint-plugin-simple-import-sort", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:7.0.0"],
+            ["@types/eslint", null],
+            ["eslint", "npm:7.24.0"]
+          ],
+          "packagePeers": [
+            "@types/eslint",
+            "eslint"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["eslint-plugin-testing-library", [
         ["npm:3.10.2", {
           "packageLocation": "./.yarn/cache/eslint-plugin-testing-library-npm-3.10.2-12442ccd45-2a9eb8f44f.zip/node_modules/eslint-plugin-testing-library/",
@@ -14781,6 +14817,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsx-a11y", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:6.4.1"],
             ["eslint-plugin-react", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:7.23.2"],
             ["eslint-plugin-react-hooks", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:4.2.0"],
+            ["eslint-plugin-simple-import-sort", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:7.0.0"],
             ["eslint-plugin-testing-library", "virtual:a315446cd0626d69c81bb371962241fad2e843699b8251d1a49a3231d7821af7bdb2285677102303361c3219ca15ceeabaa438b7b5ead02c2587180fe2eace6b#npm:4.1.1"],
             ["fontsource-roboto", "npm:4.0.0"],
             ["immer", "npm:8.0.4"],

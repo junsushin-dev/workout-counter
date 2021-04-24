@@ -5802,6 +5802,7 @@ __metadata:
     eslint: ^7.12.1
     eslint-config-prettier: 7.2.0
     eslint-plugin-prettier: ^3.1.4
+    eslint-plugin-simple-import-sort: ^7.0.0
     graphql: ^15.5.0
     graphql-tools: ^7.0.3
     jest: ^26.6.3
@@ -8700,6 +8701,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-simple-import-sort@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "eslint-plugin-simple-import-sort@npm:7.0.0"
+  peerDependencies:
+    eslint: ">=5.0.0"
+  checksum: 51fc6b675220681fd88e8fb7c0b9ff9b3b38e2c060999c72da7b0dee469cfe3fdbe1284374f2ade5015ee93d4d59eaf2d29c6185d4131b30aa057d9c9dec9483
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-testing-library@npm:^3.9.2":
   version: 3.10.2
   resolution: "eslint-plugin-testing-library@npm:3.10.2"
@@ -9650,6 +9660,7 @@ __metadata:
     eslint-plugin-jsx-a11y: ^6.4.1
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: ^4.2.0
+    eslint-plugin-simple-import-sort: ^7.0.0
     eslint-plugin-testing-library: ^4.1.1
     fontsource-roboto: ^4.0.0
     immer: ^8.0.1
