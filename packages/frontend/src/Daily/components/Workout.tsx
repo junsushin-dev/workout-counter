@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Box, Typography, LinearProgress, styled } from '@material-ui/core';
+import { Box, LinearProgress, styled,Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
-  Done as DoneIcon, 
   DirectionsRun as InProgressIcon,
-  PlayArrow as ForwardIcon,
+  Done as DoneIcon, 
   FastForward as FastForwardIcon,
   FastRewind as FastRewindIcon,
+  PlayArrow as ForwardIcon,
 } from '@material-ui/icons';
-import { IWorkout } from '../types';
+import React, { useState } from 'react';
+
 import { updateDoneCount } from '../services';
+import { IWorkout } from '../types';
 
 const useStyles = makeStyles({
   fadeInOutContainer: {

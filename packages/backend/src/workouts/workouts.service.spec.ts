@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Test, TestingModule } from '@nestjs/testing';
+
 import { WorkoutsService } from './workouts.service';
 
 describe('WorkoutsService', () => {

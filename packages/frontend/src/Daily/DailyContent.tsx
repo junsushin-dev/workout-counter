@@ -1,9 +1,10 @@
 import React from 'react';
 import { useQuery } from "react-query";
 import { useRecoilValue } from "recoil";
+
 import WorkoutList from "./components/WorkoutList";
 import SelectRoutine from './SelectRoutine/RoutineList';
-import { getWorkouts, getDateString } from "./services";
+import { getDateString,getWorkouts } from "./services";
 import { dateState } from "./states";
 import { IWorkout } from "./types";
 

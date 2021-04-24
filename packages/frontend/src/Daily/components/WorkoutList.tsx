@@ -1,10 +1,10 @@
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { Grid } from '@material-ui/core';
 
-import Workout from './Workout';
-import { dateState, getWorkoutsQuery } from '../states';
 import { getDateString } from '../services';
+import { dateState, getWorkoutsQuery } from '../states';
+import Workout from './Workout';
 
 function WorkoutList() {
   const date = useRecoilValue(dateState);

@@ -1,13 +1,15 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
+  JoinTable,
   ManyToMany,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ManyToOne,
   PrimaryGeneratedColumn,
-  JoinTable,
-  CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
 import { Exercise } from '../exercises/exercise.entity';
 
 @Entity()
