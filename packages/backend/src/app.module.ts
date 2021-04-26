@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SentryModule } from '@ntegral/nestjs-sentry';
-import { LogLevel } from '@sentry/types';
+import { RavenInterceptor, RavenModule } from 'nest-raven';
 
 import { ExercisesModule } from './exercises/exercises.module';
 import { RoutinesModule } from './routines/routines.module';
 import { WorkoutsModule } from './workouts/workouts.module';
 @Module({
   imports: [
+    RavenModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -24,17 +25,15 @@ import { WorkoutsModule } from './workouts/workouts.module';
       }),
       inject: [ConfigService],
     }),
-    SentryModule.forRoot({
-      dsn:
-        'https://aabcba7e9ada4ee3827164608b3442be@o476959.ingest.sentry.io/5736519',
-      debug: true,
-      environment: 'dev',
-      release: null,
-      logLevel: LogLevel.Debug,
-    }),
     ExercisesModule,
     RoutinesModule,
     WorkoutsModule,
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useValue: new RavenInterceptor(),
+    },
   ],
 })
 export class AppModule {}
