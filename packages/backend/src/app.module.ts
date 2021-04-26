@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RavenInterceptor, RavenModule } from 'nest-raven';
 
 import { ExercisesModule } from './exercises/exercises.module';
 import { RoutinesModule } from './routines/routines.module';
 import { WorkoutsModule } from './workouts/workouts.module';
 @Module({
   imports: [
+    RavenModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -25,6 +28,12 @@ import { WorkoutsModule } from './workouts/workouts.module';
     ExercisesModule,
     RoutinesModule,
     WorkoutsModule,
+  ],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useValue: new RavenInterceptor(),
+    },
   ],
 })
 export class AppModule {}
