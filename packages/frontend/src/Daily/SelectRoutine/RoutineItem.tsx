@@ -1,11 +1,12 @@
+import { Card, CardActionArea, CardContent, styled,Typography } from '@material-ui/core'
 import React from 'react';
+import { useQueryClient } from 'react-query';
 import { useRecoilValue } from 'recoil';
-import { Card, CardContent, Typography, styled } from '@material-ui/core'
+
+import { createWorkoutsByRoutine, getDateString } from '../services';
 import { dateState } from '../states';
 import { IRoutine } from '../types';
 import ExerciseItem from './ExerciseItem';
-import { createWorkoutsByRoutine, getDateString } from '../services';
-import { useQueryClient } from 'react-query';
 
 const TextAlignLeftCardContent = styled(CardContent)({
   textAlign: 'left',
@@ -27,12 +28,14 @@ function RoutineItem({ routine }: IProps) {
 
   return (
     <Card elevation={2} onClick={handleClick}>
-      <TextAlignLeftCardContent>
-        <Typography variant='h5' component='h3' gutterBottom>{name}</Typography>
-        {exercises.map(exercise => 
-          <ExerciseItem key={exercise.id} exercise={exercise}/>
-        )}
-      </TextAlignLeftCardContent>
+      <CardActionArea>
+        <TextAlignLeftCardContent>
+          <Typography variant='h5' component='h3' gutterBottom>{name}</Typography>
+          {exercises.map(exercise => 
+            <ExerciseItem key={exercise.id} exercise={exercise}/>
+          )}
+        </TextAlignLeftCardContent>
+      </CardActionArea>
     </Card>
   );
 }

@@ -1,4 +1,4 @@
-import { IRoutine, IWorkout, IExercise } from './types';
+import { IExercise,IRoutine, IWorkout } from './types';
 
 const MINUTE_MILLISECS = 60 * 1000;
 const DAY_MILLISECS = 24 * 60 * MINUTE_MILLISECS;

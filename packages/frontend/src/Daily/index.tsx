@@ -1,7 +1,8 @@
-import React, { Suspense } from 'react';
 import { Box, Typography } from '@material-ui/core';
-import DateNav from './components/DateNav';
+import React, { Suspense } from 'react';
+
 import CenteredProgress from '../common/CenteredProgress';
+import DateNav from './components/DateNav';
 import { DailyContent } from './DailyContent';
 
 function Daily() {

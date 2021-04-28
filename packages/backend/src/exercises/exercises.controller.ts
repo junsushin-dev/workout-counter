@@ -1,16 +1,17 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
   Put,
-  Delete,
 } from '@nestjs/common';
-import { ExercisesService } from './exercises.service';
+
 import { CreateExerciseDTO } from './dto/create-exercise.dto';
 import { UpdateExerciseDTO } from './dto/update-exercise.dto';
 import { Exercise } from './exercise.entity';
+import { ExercisesService } from './exercises.service';
 
 @Controller('exercises')
 export class ExercisesController {

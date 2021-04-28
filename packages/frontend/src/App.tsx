@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { RecoilRoot } from 'recoil';
 import './App.css';
 import 'fontsource-roboto';
 
-import { AppBar, Tabs, Tab } from '@material-ui/core';
-import Daily from './Daily';
+import { AppBar, Tab,Tabs } from '@material-ui/core';
+import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
+
+import Daily from './Daily';
 
 const queryClient = new QueryClient();
 

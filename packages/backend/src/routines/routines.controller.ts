@@ -1,12 +1,13 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
   Put,
-  Delete,
 } from '@nestjs/common';
+
 import { AddExerciseToRoutineDTO } from './dto/add-exercise-to-routine.dto';
 import { CreateRoutineDTO } from './dto/create-routine.dto';
 import { UpdateRoutineDTO } from './dto/update-routine.dto';
