@@ -1,0 +1,37 @@
+routine 구조 변경
+
+weekday에 종속되지 않은 개별적인 객체로 변경
+exercise의 집합으로 구성됨
+
+필요한 operation 상상해보기
+
+<운동할때>
+1. Daily 페이지 접속
+2. daily routine 지정되지 않음 -> routines API로 리스트 요청
+3. 리스트 렌더링해서 선택 페이지 보여줌
+4. 선택 페이지에서 하나 클릭 -> workouts POST 수행
+
+<관리할때 - Routine>
+1. Routines 페이지 접속
+2. 만들어놓은 Routines 리스트 확인
+3. 새로운 Routine 생성
+4. Exercise를 조합해서 Routine에 넣기 (수정, 신규)
+
+<관리할때 - Exercise>
+1. Exercises 페이지 접속
+2. 만들어놓은 Exercise 리스트 확인
+3. 새로운 Exercise 작성
+4. 기존 Exercise 수정(name, count)
+5. Exercise 삭제
+
+user
+- id, email, password, username
+
+routine
+- id, name, exercises(N:N)
+
+workout
+- id, exercise_id(1:N), done, date
+
+exercise
+- id, count, name
