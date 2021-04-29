@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Exercise } from 'src/exercises/exercise.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 
-import { CreateWorkoutDTO } from './dto/create-workout.dto';
+import { CreateWorkoutsDTO } from './dto/create-workout.dto';
 import { Workout } from './workout.entity';
 
 @Injectable()
@@ -15,13 +15,18 @@ export class WorkoutsService {
     private exerciseRepository: Repository<Exercise>,
   ) {}
 
-  async create(createWorkoutDTO: CreateWorkoutDTO): Promise<Workout> {
-    const { date, exerciseId } = createWorkoutDTO;
-    const exercise = await this.exerciseRepository.findOne(exerciseId);
-    const workout = new Workout();
-    workout.date = date;
-    workout.exercise = exercise;
-    return this.workoutRepository.save(workout);
+  async create(createWorkoutsDTO: CreateWorkoutsDTO): Promise<Workout[]> {
+    const { date, exerciseIds } = createWorkoutsDTO;
+    const exercises = await this.exerciseRepository.find({
+      id: In(exerciseIds),
+    });
+    const workouts = exercises.map((exercise) => {
+      const workout = new Workout();
+      workout.date = date;
+      workout.exercise = exercise;
+      return workout;
+    });
+    return this.workoutRepository.save(workouts);
   }
 
   async findAll(date: Date) {

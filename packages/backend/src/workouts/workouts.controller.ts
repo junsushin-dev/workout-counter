@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common';
 
-import { CreateWorkoutDTO } from './dto/create-workout.dto';
+import { CreateWorkoutsDTO } from './dto/create-workout.dto';
 import { UpdateWorkoutDTO } from './dto/update-workout.dto';
 import { WorkoutsService } from './workouts.service';
 
@@ -18,8 +18,8 @@ export class WorkoutsController {
   constructor(private workoutsService: WorkoutsService) {}
 
   @Post()
-  async create(@Body() createWorkoutDTO: CreateWorkoutDTO) {
-    return this.workoutsService.create(createWorkoutDTO);
+  async create(@Body() createWorkoutsDTO: CreateWorkoutsDTO) {
+    return this.workoutsService.create(createWorkoutsDTO);
   }
 
   @Get()
