@@ -70,18 +70,19 @@ export const getRoutines = async ():Promise<IRoutine[]> => {
   return await res.json();
 }
 
-const createWorkoutByExercise = async (date: Date, exercise: IExercise): Promise<IWorkout> => {
+const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
-  const body = new URLSearchParams();
-  body.set('date', dateString);
-  body.set('exerciseId', exercise.id.toString());
 
   const res = await fetch('/api/workouts', {
     method: 'POST',
     headers: {
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
     },
-    body,
+    body: JSON.stringify({
+      date: dateString,
+      exerciseIds: exercises.map((exercise) => exercise.id),
+    }),
   })
 
   const workout = await res.json();
@@ -90,7 +91,7 @@ const createWorkoutByExercise = async (date: Date, exercise: IExercise): Promise
 
 export const createWorkoutsByRoutine = async (date: Date, routine: IRoutine): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
-  const workouts: IWorkout[] = await Promise.all(routine.exercises.map((exercise) => createWorkoutByExercise(date, exercise)));
+  const workouts: IWorkout[] = await createWorkoutsByExercises(date, routine.exercises);
   workoutsCache.set(dateString, workouts);
   return workouts;
 }
