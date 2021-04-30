@@ -1,7 +1,7 @@
 import './App.css';
 import 'fontsource-roboto';
 
-import { AppBar, Tab,Tabs } from '@material-ui/core';
+import { AppBar, Tab, Tabs } from '@material-ui/core';
 import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
@@ -26,6 +26,7 @@ function App() {
             <Tabs value={currTab} onChange={handleChange}>
               <Tab label="Daily" />
               <Tab label="Monthly" />
+              <Tab label="Exercises" />
               <Tab label="Routines" />
               <Tab label="Settings" />
             </Tabs>
