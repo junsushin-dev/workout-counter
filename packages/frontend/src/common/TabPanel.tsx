@@ -14,6 +14,7 @@ export function TabPanel({ children, index, value }: TabPanelProps) {
       hidden={value !== index}
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
+      style={{ height: '100%' }}
     >
       {value === index && (
         <Box>
