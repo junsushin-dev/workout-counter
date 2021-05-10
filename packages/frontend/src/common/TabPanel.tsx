@@ -1,4 +1,3 @@
-import { Box } from '@material-ui/core';
 import React from 'react';
 
 interface TabPanelProps {
@@ -16,11 +15,7 @@ export function TabPanel({ children, index, value }: TabPanelProps) {
       aria-labelledby={`tab-${index}`}
       style={{ height: '100%' }}
     >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
+      {value === index && children}
     </div>
   )
 }

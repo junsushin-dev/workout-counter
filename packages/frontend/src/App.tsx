@@ -8,6 +8,7 @@ import { RecoilRoot } from 'recoil';
 
 import { TabPanel } from './common/TabPanel';
 import Daily from './Daily';
+import { ExercisesTab } from './Exercises';
 
 const queryClient = new QueryClient();
 
@@ -39,7 +40,7 @@ function App() {
             Monthly
           </TabPanel>
           <TabPanel index={2} value={currTab}>
-            Exercise
+            <ExercisesTab />
           </TabPanel>
           <TabPanel index={3} value={currTab}>
             Routines
