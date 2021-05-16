@@ -1,16 +1,15 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
-import { useQuery } from 'react-query';
 import { useRecoilValue } from 'recoil';
 
-import { getDateString, getWorkouts } from '../services';
+import { useWorkouts } from '../hooks/useWorkouts';
+import { getDateString } from '../services';
 import { dateState } from '../states';
-import { IWorkout } from '../types';
 import Workout from './Workout';
 
 function WorkoutList() {
   const date = useRecoilValue(dateState);
-  const workoutQuery = useQuery<IWorkout[], Error>(`workouts/${getDateString(date)}`, () => getWorkouts(date));
+  const workoutQuery = useWorkouts();
   
   if (workoutQuery.isIdle || workoutQuery.isLoading) {
     return <span>loading...</span>;
