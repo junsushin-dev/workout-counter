@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import { useQuery, useQueryClient } from "react-query";
+import { useQueryClient } from "react-query";
 import { useRecoilValue } from "recoil";
 
+import { useWorkouts } from '../hooks/useWorkouts';
 import WorkoutList from "./components/WorkoutList";
 import SelectRoutine from './SelectRoutine/RoutineList';
 import { DAY_MILLISECS, getDateString,getWorkouts } from "./services";
 import { dateState } from "./states";
-import { IWorkout } from "./types";
 
 export function DailyContent() {
   const date = useRecoilValue(dateState);
-  const workoutQuery = useQuery<IWorkout[], Error>(`workouts/${getDateString(date)}`, () => getWorkouts(date));
+  const workoutQuery = useWorkouts();
   const queryClient = useQueryClient();
 
   useEffect(() => {

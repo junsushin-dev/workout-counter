@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
-import { useWorkouts } from '../hooks/useWorkouts';
+import { useWorkouts } from '../../hooks/useWorkouts';
 import { getDateString } from '../services';
 import { dateState } from '../states';
 import Workout from './Workout';
