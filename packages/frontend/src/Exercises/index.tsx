@@ -1,18 +1,21 @@
 import { Box, Button } from '@material-ui/core';
-import { DataGrid, GridColDef, GridRowsProp } from '@material-ui/data-grid';
-import React, { useEffect,useState } from 'react';
+import { DataGrid, GridColDef } from '@material-ui/data-grid';
+import React from 'react';
 
-import { getExercises } from './services';
+import { useExercises } from '../hooks/useExercises';
 
 export function ExercisesTab() {
-  const [exercises, setExercises] = useState<GridRowsProp>([]);
+  const exercisesQuery = useExercises();
 
-  useEffect(() => {
-    (async () => {
-      const fetchedExercises = await getExercises();
-      setExercises(fetchedExercises);
-    })();
-  }, []);
+  if (exercisesQuery.isIdle || exercisesQuery.isLoading) {
+    return <span>loading...</span>;
+  }
+
+  if (exercisesQuery.isError) {
+    return <span>{exercisesQuery.error}</span>
+  }
+
+  const exercises = exercisesQuery.data;
 
   const columns: GridColDef[] = [
     { field: 'name', headerName: 'Name', width: 150 },
