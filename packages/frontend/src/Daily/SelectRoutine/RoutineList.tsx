@@ -1,13 +1,22 @@
 import { Box, Grid } from '@material-ui/core';
 import React from 'react';
-import { useRecoilValue } from 'recoil';
 
-import { getRoutinesQuery } from '../states';
+import { useRoutines } from '../hooks/useRoutines';
 import RoutineItem from './RoutineItem';
 
 function RoutineList() {
-  const routines = useRecoilValue(getRoutinesQuery);
+  const routinesQuery = useRoutines();
   
+  if (routinesQuery.isIdle || routinesQuery.isLoading) {
+    return <span>loading...</span>;
+  }
+
+  if (routinesQuery.isError) {
+    return <span>{routinesQuery.error}</span>
+  }
+
+  const routines = routinesQuery.data;
+
   return (
     <Box>
       <Grid container direction='column' spacing={2}>
