@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useQueryClient } from "react-query";
 import { useRecoilValue } from "recoil";
 
+import { getWorkouts } from "../apis/workoutsAPI";
 import { useWorkouts } from '../hooks/useWorkouts';
+import { DAY_MILLISECS, getDateString } from '../utils/getDateString';
 import WorkoutList from "./components/WorkoutList";
 import SelectRoutine from './SelectRoutine/RoutineList';
-import { DAY_MILLISECS, getDateString,getWorkouts } from "./services";
 import { dateState } from "./states";
 
 export function DailyContent() {

@@ -1,4 +1,4 @@
-import { getDateString } from '../../src/Daily/services';
+import { getDateString } from './getDateString';
 
 describe('test getDateString function', () => {
 

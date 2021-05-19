@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from "react-query";
 
-import { getRoutines } from "../Daily/services";
+import { getRoutines } from "../apis/workoutsAPI";
 import { IRoutine } from "../Daily/types";
 
 export function useRoutines(): UseQueryResult<IRoutine[], Error> {

@@ -9,7 +9,7 @@ import {
 } from '@material-ui/icons';
 import React, { useState } from 'react';
 
-import { updateDoneCount } from '../services';
+import { updateDoneCount } from '../../apis/workoutsAPI';
 import { IWorkout } from '../types';
 
 const useStyles = makeStyles({

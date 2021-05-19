@@ -1,9 +1,10 @@
 import { useQuery, UseQueryResult } from "react-query";
 import { useRecoilValue } from "recoil";
 
-import { getDateString, getWorkouts } from "../Daily/services";
+import { getWorkouts } from "../apis/workoutsAPI";
 import { dateState } from "../Daily/states";
 import { IWorkout } from "../Daily/types";
+import { getDateString } from '../utils/getDateString';
 
 export function useWorkouts(): UseQueryResult<IWorkout[], Error> {
   const date = useRecoilValue(dateState);

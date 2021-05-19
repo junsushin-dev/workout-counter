@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 
-import { getRoutines,getWorkouts } from './services';
+import { getRoutines,getWorkouts } from '../apis/workoutsAPI';
 import { IRoutine,IWorkout } from './types';
 
 const dateState = atom<Date>({

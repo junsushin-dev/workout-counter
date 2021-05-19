@@ -3,7 +3,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { useWorkouts } from '../../hooks/useWorkouts';
-import { getDateString } from '../services';
+import { getDateString } from '../../utils/getDateString';
 import { dateState } from '../states';
 import Workout from './Workout';
 

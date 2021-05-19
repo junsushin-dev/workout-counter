@@ -3,7 +3,8 @@ import React from 'react';
 import { useQueryClient } from 'react-query';
 import { useRecoilValue } from 'recoil';
 
-import { createWorkoutsByRoutine, getDateString } from '../services';
+import { createWorkoutsByRoutine } from '../../apis/workoutsAPI';
+import { getDateString } from '../../utils/getDateString';
 import { dateState } from '../states';
 import { IRoutine } from '../types';
 import ExerciseItem from './ExerciseItem';
