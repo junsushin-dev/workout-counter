@@ -1,4 +1,4 @@
-export class CreateWorkoutDTO {
+export class CreateWorkoutsDTO {
   date: Date;
-  exerciseId: number;
+  exerciseIds: number[];
 }

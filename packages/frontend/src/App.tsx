@@ -1,12 +1,14 @@
 import './App.css';
 import 'fontsource-roboto';
 
-import { AppBar, Tab,Tabs } from '@material-ui/core';
+import { AppBar, Tab, Tabs } from '@material-ui/core';
 import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 
-import Daily from './Daily';
+import { TabPanel } from './views/common/TabPanel';
+import Daily from './views/Daily';
+import { ExercisesTab } from './views/Exercises';
 
 const queryClient = new QueryClient();
 
@@ -26,11 +28,26 @@ function App() {
             <Tabs value={currTab} onChange={handleChange}>
               <Tab label="Daily" />
               <Tab label="Monthly" />
+              <Tab label="Exercises" />
               <Tab label="Routines" />
               <Tab label="Settings" />
             </Tabs>
           </AppBar>
-          <Daily />
+          <TabPanel index={0} value={currTab}>
+            <Daily />
+          </TabPanel>
+          <TabPanel index={1} value={currTab}>
+            Monthly
+          </TabPanel>
+          <TabPanel index={2} value={currTab}>
+            <ExercisesTab />
+          </TabPanel>
+          <TabPanel index={3} value={currTab}>
+            Routines
+          </TabPanel>
+          <TabPanel index={4} value={currTab}>
+            Settings
+          </TabPanel>
         </div>
       </RecoilRoot>
     </QueryClientProvider>
