@@ -1,7 +1,7 @@
 import { Box, Grid } from '@material-ui/core';
 import React from 'react';
 
-import { useRoutines } from '../../hooks/useRoutines';
+import { useRoutines } from '../../../hooks/useRoutines';
 import RoutineItem from './RoutineItem';
 
 function RoutineList() {

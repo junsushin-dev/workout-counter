@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useQueryClient } from "react-query";
 import { useRecoilValue } from "recoil";
 
-import { getWorkouts } from "../apis/workoutsAPI";
-import { useWorkouts } from '../hooks/useWorkouts';
-import { DAY_MILLISECS, getDateString } from '../utils/getDateString';
+import { getWorkouts } from "../../apis/workoutsAPI";
+import { useWorkouts } from '../../hooks/useWorkouts';
+import { DAY_MILLISECS, getDateString } from '../../utils/getDateString';
 import WorkoutList from "./components/WorkoutList";
 import SelectRoutine from './SelectRoutine/RoutineList';
 import { dateState } from "./states";

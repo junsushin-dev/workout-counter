@@ -6,9 +6,9 @@ import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 
-import { TabPanel } from './common/TabPanel';
-import Daily from './Daily';
-import { ExercisesTab } from './Exercises';
+import { TabPanel } from './views/common/TabPanel';
+import Daily from './views/Daily';
+import { ExercisesTab } from './views/Exercises';
 
 const queryClient = new QueryClient();
 

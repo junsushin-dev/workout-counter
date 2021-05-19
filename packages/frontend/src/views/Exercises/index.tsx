@@ -2,7 +2,7 @@ import { Box, Button } from '@material-ui/core';
 import { DataGrid, GridColDef } from '@material-ui/data-grid';
 import React from 'react';
 
-import { useExercises } from '../hooks/useExercises';
+import { useExercises } from '../../hooks/useExercises';
 
 export function ExercisesTab() {
   const exercisesQuery = useExercises();
