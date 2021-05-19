@@ -1,4 +1,4 @@
-import { IExercise, IRoutine, IWorkout } from '../Daily/types';
+import { IExercise, IRoutine, IWorkout } from '../types';
 import { getDateString } from '../utils/getDateString';
 
 export const getWorkouts = async (date: Date):Promise<IWorkout[]> => {

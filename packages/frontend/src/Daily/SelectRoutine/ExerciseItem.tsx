@@ -1,7 +1,7 @@
 import { Box, Typography } from '@material-ui/core'
 import React from 'react';
 
-import { IExercise } from '../types';
+import { IExercise } from '../../types';
 
 interface IProps {
   exercise: IExercise;

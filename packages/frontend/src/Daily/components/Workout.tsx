@@ -10,7 +10,7 @@ import {
 import React, { useState } from 'react';
 
 import { updateDoneCount } from '../../apis/workoutsAPI';
-import { IWorkout } from '../types';
+import { IWorkout } from '../../types';
 
 const useStyles = makeStyles({
   fadeInOutContainer: {

@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 
 import { getWorkouts } from "../apis/workoutsAPI";
 import { dateState } from "../Daily/states";
-import { IWorkout } from "../Daily/types";
+import { IWorkout } from "../types";
 import { getDateString } from '../utils/getDateString';
 
 export function useWorkouts(): UseQueryResult<IWorkout[], Error> {
