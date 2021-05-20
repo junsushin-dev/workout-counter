@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useRoutines } from '../../../hooks/useRoutines';
 import CenteredProgress from '../../common/CenteredProgress';
+import { ErrorMessage } from '../../common/ErrorMessage';
 import RoutineItem from './RoutineItem';
 
 function RoutineList() {
@@ -13,7 +14,7 @@ function RoutineList() {
   }
 
   if (routinesQuery.isError) {
-    return <span>{routinesQuery.error}</span>
+    return <ErrorMessage message={routinesQuery.error.message} />
   }
 
   const routines = routinesQuery.data;

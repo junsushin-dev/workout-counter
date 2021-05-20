@@ -4,6 +4,7 @@ import React from 'react';
 
 import { useExercises } from '../../hooks/useExercises';
 import CenteredProgress from '../common/CenteredProgress';
+import { ErrorMessage } from '../common/ErrorMessage';
 
 export function ExercisesTab() {
   const exercisesQuery = useExercises();
@@ -13,7 +14,7 @@ export function ExercisesTab() {
   }
 
   if (exercisesQuery.isError) {
-    return <span>{exercisesQuery.error}</span>
+    return <ErrorMessage message={exercisesQuery.error.message} />
   }
 
   const exercises = exercisesQuery.data;

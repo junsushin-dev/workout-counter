@@ -6,6 +6,7 @@ import { getWorkouts } from "../../apis/workoutsAPI";
 import { useWorkouts } from '../../hooks/useWorkouts';
 import { DAY_MILLISECS, getDateString } from '../../utils/getDateString';
 import CenteredProgress from '../common/CenteredProgress';
+import { ErrorMessage } from '../common/ErrorMessage';
 import WorkoutList from "./components/WorkoutList";
 import SelectRoutine from './SelectRoutine/RoutineList';
 import { dateState } from "./states";
@@ -31,7 +32,9 @@ export function DailyContent() {
   }
 
   if (workoutQuery.isError) {
-    return <span>{workoutQuery.error}</span>
+    return (
+      <ErrorMessage message={workoutQuery.error.message} />
+    );
   }
   
   return (
