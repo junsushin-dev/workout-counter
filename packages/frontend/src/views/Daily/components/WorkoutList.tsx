@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 
 import { useWorkouts } from '../../../hooks/useWorkouts';
 import { getDateString } from '../../../utils/getDateString';
+import CenteredProgress from '../../common/CenteredProgress';
 import { dateState } from '../states';
 import Workout from './Workout';
 
@@ -12,7 +13,7 @@ function WorkoutList() {
   const workoutQuery = useWorkouts();
   
   if (workoutQuery.isIdle || workoutQuery.isLoading) {
-    return <span>loading...</span>;
+    return <CenteredProgress />;
   }
 
   if (workoutQuery.isError) {
