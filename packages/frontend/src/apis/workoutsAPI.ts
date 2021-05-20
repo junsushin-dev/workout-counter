@@ -1,44 +1,44 @@
 import { IExercise, IRoutine, IWorkout } from '../types';
+import { customFetch } from '../utils/customFetch';
 import { getDateString } from '../utils/getDateString';
 
-export const getWorkouts = async (date: Date):Promise<IWorkout[]> => {
+export const getWorkouts = async (date: Date): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
   
-  const res = await fetch(`/api/workouts?date=${dateString}`, {
+  const workouts = await customFetch(`/api/workouts?date=${dateString}`, {
     headers: {
       'Accept': 'application/json',
     },
   });
-  if(res.status === 404) {
-    return [];
-  }
-  const workouts = await res.json();
+
   return workouts;
 }
 
-export const updateDoneCount = async (id: number, date: Date, doneCount: number):Promise<void> => {
+export const updateDoneCount = async (id: number, date: Date, doneCount: number): Promise<void> => {
   const body = new URLSearchParams();
   body.set('count', doneCount.toString());
-  const res = await fetch(`/api/workouts/${id}`, {
+
+  const updatedWorkout = await customFetch(`/api/workouts/${id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json'
     },
     body,
   });
-  const updatedWorkout = await res.json();
+
   return updatedWorkout;
 }
 
-export const getRoutines = async ():Promise<IRoutine[]> => {
-  const res = await fetch('/api/routines');
-  return await res.json();
+export const getRoutines = async (): Promise<IRoutine[]> => {
+  const routines = await customFetch('/api/routines');
+
+  return routines;
 }
 
 const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
 
-  const res = await fetch('/api/workouts', {
+  const workouts = await customFetch('/api/workouts', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -50,7 +50,6 @@ const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Pr
     }),
   })
 
-  const workouts = await res.json();
   return workouts;
 }
 

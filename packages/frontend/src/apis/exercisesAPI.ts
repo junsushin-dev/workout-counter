@@ -1,5 +1,7 @@
+import { customFetch } from "../utils/customFetch";
+
 export const getExercises = async () => {
-  const res = await fetch('/api/exercises');
-  const exercises = await res.json();
+  const exercises = await customFetch('/api/exercises');
+
   return exercises;
 }
