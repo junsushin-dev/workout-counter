@@ -3,16 +3,18 @@ import { DataGrid, GridColDef } from '@material-ui/data-grid';
 import React from 'react';
 
 import { useExercises } from '../../hooks/useExercises';
+import CenteredProgress from '../common/CenteredProgress';
+import { ErrorMessage } from '../common/ErrorMessage';
 
 export function ExercisesTab() {
   const exercisesQuery = useExercises();
 
   if (exercisesQuery.isIdle || exercisesQuery.isLoading) {
-    return <span>loading...</span>;
+    return <CenteredProgress />;
   }
 
   if (exercisesQuery.isError) {
-    return <span>{exercisesQuery.error}</span>
+    return <ErrorMessage message={exercisesQuery.error.message} />
   }
 
   const exercises = exercisesQuery.data;
