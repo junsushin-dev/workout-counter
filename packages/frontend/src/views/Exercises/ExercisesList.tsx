@@ -6,7 +6,7 @@ import { useExercises } from '../../hooks/useExercises';
 import CenteredProgress from '../common/CenteredProgress';
 import { ErrorMessage } from '../common/ErrorMessage';
 
-export function ExercisesTab() {
+export function ExercisesList() {
   const exercisesQuery = useExercises();
 
   if (exercisesQuery.isIdle || exercisesQuery.isLoading) {
