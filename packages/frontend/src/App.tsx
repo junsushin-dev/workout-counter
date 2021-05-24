@@ -9,7 +9,7 @@ import { RecoilRoot } from 'recoil';
 
 import { useRerender } from './hooks/useRerender';
 import Daily from './views/Daily';
-import { ExercisesList } from './views/Exercises/ExercisesList';
+import { ExercisesTab } from './views/Exercises';
 
 const queryClient = new QueryClient();
 
@@ -38,7 +38,7 @@ function App() {
                 Monthly
               </Route>
               <Route path='/exercises'>
-                <ExercisesList />
+                <ExercisesTab />
               </Route>
               <Route path='/routines'>
                 Routines
