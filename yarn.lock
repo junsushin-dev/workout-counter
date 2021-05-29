@@ -9753,6 +9753,7 @@ __metadata:
     node-notifier: ^8.0.1
     react: ^17.0.1
     react-dom: ^17.0.1
+    react-hook-form: ^7.6.10
     react-query: ^3.13.4
     react-refresh: ^0.10.0
     react-router-dom: ^5.2.0
@@ -15930,6 +15931,15 @@ fsevents@^1.2.7:
   version: 6.0.9
   resolution: "react-error-overlay@npm:6.0.9"
   checksum: 5e971284cc76af684940d78a91c8eac639f16b3b9500a03423ae177392cdaf320788b9c9112f58a2dde4f5a80688acdbc89334827354e95493244968af94830f
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.6.10":
+  version: 7.6.10
+  resolution: "react-hook-form@npm:7.6.10"
+  peerDependencies:
+    react: ^16.8.0 || ^17
+  checksum: 0fc0f63d827c40b7a107f9cabf4765514fc519c1754cd404f3c5e647821fa0d3bf9a8efb6b184faa3b89626417a8b425d808004e62deec808ec80ff5f324fcb7
   languageName: node
   linkType: hard
 
