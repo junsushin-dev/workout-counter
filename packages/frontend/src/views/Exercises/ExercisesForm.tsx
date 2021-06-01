@@ -20,6 +20,10 @@ export function ExercisesForm() {
     }
   }
 
+  const onCancel = () => {
+    history.push('/exercises');
+  }
+
   return (
     <Box display='flex' flexDirection='column' height='100%' padding={4}>
       <Box paddingBottom={4}>
@@ -38,7 +42,7 @@ export function ExercisesForm() {
           }} />
         <Box display="flex" justifyContent="space-around">
           <Button type="submit" variant='contained' color='primary'>Confirm</Button>
-          <Button variant='contained' color='primary'>Cancel</Button>
+          <Button onClick={onCancel} variant='contained' color='primary'>Cancel</Button>
         </Box>
       </form>
     </Box>
