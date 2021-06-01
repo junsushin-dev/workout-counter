@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, useRouteMatch } from "react-router-dom";
+import { Route, useRouteMatch } from 'react-router-dom';
 
 import { ExercisesForm } from './ExercisesForm';
 import { ExercisesList } from './ExercisesList';
@@ -16,6 +16,5 @@ export function ExercisesTab() {
         <ExercisesForm />
       </Route>
     </>
-  )
-
+  );
 }

@@ -12,13 +12,13 @@ import Workout from './Workout';
 function WorkoutList() {
   const date = useRecoilValue(dateState);
   const workoutQuery = useWorkouts();
-  
+
   if (workoutQuery.isIdle || workoutQuery.isLoading) {
     return <CenteredProgress />;
   }
 
   if (workoutQuery.isError) {
-    return <ErrorMessage message={workoutQuery.error.message} />
+    return <ErrorMessage message={workoutQuery.error.message} />;
   }
 
   const workouts = workoutQuery.data;
@@ -27,7 +27,7 @@ function WorkoutList() {
     <Grid container spacing={2}>
       {workouts.map((workout) => (
         <Grid key={getDateString(date) + workout.exercise.name} item xs={12}>
-          <Workout workout={workout} date={date}/>
+          <Workout workout={workout} date={date} />
         </Grid>
       ))}
     </Grid>

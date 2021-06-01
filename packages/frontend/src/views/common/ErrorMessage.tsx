@@ -16,6 +16,6 @@ export function ErrorMessage({ message }: ErrorMessageProps) {
         <img src={ErrorImage} alt="error" width="50%" />
       </Box>
       <span>{`Error: ${message}`}</span>
-  </div>
-  )
+    </div>
+  );
 }

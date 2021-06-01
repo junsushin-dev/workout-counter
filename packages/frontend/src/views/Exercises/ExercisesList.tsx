@@ -16,7 +16,7 @@ export function ExercisesList() {
   }
 
   if (exercisesQuery.isError) {
-    return <ErrorMessage message={exercisesQuery.error.message} />
+    return <ErrorMessage message={exercisesQuery.error.message} />;
   }
 
   const exercises = exercisesQuery.data;
@@ -28,15 +28,17 @@ export function ExercisesList() {
   ];
 
   const handleClick = () => history.push('/exercises/new');
-  
+
   return (
-    <Box display='flex' flexDirection='column' height='100%'>
+    <Box display="flex" flexDirection="column" height="100%">
       <div style={{ flex: 1, width: '100%' }}>
         <DataGrid rows={exercises} columns={columns} />
       </div>
       <Box padding={2}>
-        <Button variant='contained' color='primary' onClick={handleClick}>Add Exercise</Button>
+        <Button variant="contained" color="primary" onClick={handleClick}>
+          Add Exercise
+        </Button>
       </Box>
     </Box>
-  )
+  );
 }
