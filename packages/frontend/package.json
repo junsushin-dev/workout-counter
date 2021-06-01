@@ -44,11 +44,13 @@
       "react-app/jest"
     ],
     "plugins": [
-      "simple-import-sort"
+      "simple-import-sort",
+      "prettier"
     ],
     "rules": {
       "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error"
+      "simple-import-sort/exports": "error",
+      "prettier/prettier": "error"
     }
   },
   "browserslist": {
@@ -72,6 +74,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.3.5",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
