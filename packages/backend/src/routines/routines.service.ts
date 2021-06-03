@@ -14,7 +14,7 @@ export class RoutinesService {
     @InjectRepository(Routine)
     private routineRepository: Repository<Routine>,
     @InjectRepository(Exercise)
-    private exerciseRepository: Repository<Exercise>,
+    private exerciseRepository: Repository<Exercise>
   ) {}
 
   async create(createRoutineDTO: CreateRoutineDTO): Promise<Routine> {
@@ -40,16 +40,11 @@ export class RoutinesService {
     await this.routineRepository.delete(id);
   }
 
-  async addExercise(
-    id: string,
-    addExerciseToRoutineDTO: AddExerciseToRoutineDTO,
-  ) {
+  async addExercise(id: string, addExerciseToRoutineDTO: AddExerciseToRoutineDTO) {
     const routine = await this.routineRepository.findOne(id, {
       relations: ['exercises'],
     });
-    const exercise = await this.exerciseRepository.findOne(
-      addExerciseToRoutineDTO.exerciseId,
-    );
+    const exercise = await this.exerciseRepository.findOne(addExerciseToRoutineDTO.exerciseId);
     routine.exercises.push(exercise);
     this.routineRepository.save(routine);
     this.exerciseRepository.save(exercise);
@@ -61,9 +56,7 @@ export class RoutinesService {
       relations: ['exercises'],
     });
 
-    routine.exercises = routine.exercises.filter(
-      (exercise) => exercise.id !== parseInt(exerciseId),
-    );
+    routine.exercises = routine.exercises.filter((exercise) => exercise.id !== parseInt(exerciseId));
     this.routineRepository.save(routine);
     return routine;
   }

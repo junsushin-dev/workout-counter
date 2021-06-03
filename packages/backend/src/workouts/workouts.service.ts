@@ -12,7 +12,7 @@ export class WorkoutsService {
     @InjectRepository(Workout)
     private workoutRepository: Repository<Workout>,
     @InjectRepository(Exercise)
-    private exerciseRepository: Repository<Exercise>,
+    private exerciseRepository: Repository<Exercise>
   ) {}
 
   async create(createWorkoutsDTO: CreateWorkoutsDTO): Promise<Workout[]> {

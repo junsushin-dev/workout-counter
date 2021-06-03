@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Patch,
-  Post,
-  Query,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 
 import { CreateWorkoutsDTO } from './dto/create-workout.dto';
 import { UpdateWorkoutDTO } from './dto/update-workout.dto';
@@ -33,10 +24,7 @@ export class WorkoutsController {
   // }
 
   @Patch(':id')
-  async updateDoneCount(
-    @Param('id') id: number,
-    @Body() updateWorkoutDTO: UpdateWorkoutDTO,
-  ) {
+  async updateDoneCount(@Param('id') id: number, @Body() updateWorkoutDTO: UpdateWorkoutDTO) {
     return this.workoutsService.updateDoneCount(id, updateWorkoutDTO.count);
   }
 

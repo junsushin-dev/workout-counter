@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 
 import { AddExerciseToRoutineDTO } from './dto/add-exercise-to-routine.dto';
 import { CreateRoutineDTO } from './dto/create-routine.dto';
@@ -33,10 +25,7 @@ export class RoutineController {
   }
 
   @Put(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateRoutineDTO: UpdateRoutineDTO,
-  ) {
+  async update(@Param('id') id: string, @Body() updateRoutineDTO: UpdateRoutineDTO) {
     return this.routineService.update(id, updateRoutineDTO);
   }
 
@@ -46,18 +35,12 @@ export class RoutineController {
   }
 
   @Post(':id/exercises')
-  async addExercise(
-    @Param('id') id: string,
-    @Body() addExerciseToRoutineDTO: AddExerciseToRoutineDTO,
-  ) {
+  async addExercise(@Param('id') id: string, @Body() addExerciseToRoutineDTO: AddExerciseToRoutineDTO) {
     return this.routineService.addExercise(id, addExerciseToRoutineDTO);
   }
 
   @Delete(':id/exercises/:exerciseId')
-  async removeExercise(
-    @Param('id') id: string,
-    @Param('exerciseId') exerciseId: string,
-  ) {
+  async removeExercise(@Param('id') id: string, @Param('exerciseId') exerciseId: string) {
     return this.routineService.removeExercise(id, exerciseId);
   }
 }
