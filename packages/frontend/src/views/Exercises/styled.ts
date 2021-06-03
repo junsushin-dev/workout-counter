@@ -5,6 +5,4 @@ export const StyledTextField = styled(TextField)({
   marginBottom: '20px',
 });
 
-export const StyledButtonBox = styled(Button)({
-
-})
+export const StyledButtonBox = styled(Button)({});

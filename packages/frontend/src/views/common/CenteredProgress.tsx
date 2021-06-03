@@ -1,5 +1,5 @@
 import { Box, CircularProgress } from '@material-ui/core';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function CenteredProgress() {
   const [delayFinished, setDelayFinished] = useState(false);
@@ -13,7 +13,7 @@ function CenteredProgress() {
 
   return (
     <Box pt={5} display="flex" flexDirection="row" justifyContent="center" alignItems="center">
-      {delayFinished && <CircularProgress size={100}/>}
+      {delayFinished && <CircularProgress size={100} />}
     </Box>
   );
 }

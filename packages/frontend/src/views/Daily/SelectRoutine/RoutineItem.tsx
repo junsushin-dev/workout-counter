@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, styled,Typography } from '@material-ui/core'
+import { Card, CardActionArea, CardContent, styled, Typography } from '@material-ui/core';
 import React from 'react';
 import { useQueryClient } from 'react-query';
 import { useRecoilValue } from 'recoil';
@@ -25,16 +25,18 @@ function RoutineItem({ routine }: IProps) {
   const handleClick = async () => {
     await createWorkoutsByRoutine(date, routine);
     queryClient.invalidateQueries(`workouts/${getDateString(date)}`);
-  }
+  };
 
   return (
     <Card elevation={2} onClick={handleClick}>
       <CardActionArea>
         <TextAlignLeftCardContent>
-          <Typography variant='h5' component='h3' gutterBottom>{name}</Typography>
-          {exercises.map(exercise => 
-            <ExerciseItem key={exercise.id} exercise={exercise}/>
-          )}
+          <Typography variant="h5" component="h3" gutterBottom>
+            {name}
+          </Typography>
+          {exercises.map((exercise) => (
+            <ExerciseItem key={exercise.id} exercise={exercise} />
+          ))}
         </TextAlignLeftCardContent>
       </CardActionArea>
     </Card>

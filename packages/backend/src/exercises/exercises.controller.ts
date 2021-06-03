@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 
 import { CreateExerciseDTO } from './dto/create-exercise.dto';
 import { UpdateExerciseDTO } from './dto/update-exercise.dto';
@@ -33,10 +25,7 @@ export class ExercisesController {
   }
 
   @Put(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateExerciseDTO: UpdateExerciseDTO,
-  ): Promise<Exercise> {
+  async update(@Param('id') id: string, @Body() updateExerciseDTO: UpdateExerciseDTO): Promise<Exercise> {
     return this.exercisesService.update(id, updateExerciseDTO);
   }
 

@@ -1,8 +1,8 @@
-import { Box, LinearProgress, styled,Typography } from '@material-ui/core';
+import { Box, LinearProgress, styled, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
+import {
   DirectionsRun as InProgressIcon,
-  Done as DoneIcon, 
+  Done as DoneIcon,
   FastForward as FastForwardIcon,
   FastRewind as FastRewindIcon,
   PlayArrow as ForwardIcon,
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     paddingBottom: '4px',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   progressBar: {
     height: '30px',
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
 });
 
 const RewindIcon = styled(ForwardIcon)({
-  transform: "rotate(-180deg)",
+  transform: 'rotate(-180deg)',
 });
 
 const FORWARD_OFFSET = 1;
@@ -59,7 +59,11 @@ interface IProps {
 }
 
 function Workout({ date, workout }: IProps) {
-  const { id, exercise: { name, count: targetCount }, doneCount: done } = workout;
+  const {
+    id,
+    exercise: { name, count: targetCount },
+    doneCount: done,
+  } = workout;
 
   const classes = useStyles();
   const [doneCount, setDoneCount] = useState(done);
@@ -76,25 +80,25 @@ function Workout({ date, workout }: IProps) {
   return (
     <div className={classes.fadeInOutContainer}>
       <div className={classes.headerBar}>
-        <Box display='flex' flexDirection='row'>
+        <Box display="flex" flexDirection="row">
           <Typography>{name}</Typography>
           {isFinished ? <DoneIcon /> : <InProgressIcon />}
         </Box>
         <Typography>{progressText}</Typography>
       </div>
-      <LinearProgress className={classes.progressBar} value={doneCount / targetCount * 100} variant='determinate'/>
+      <LinearProgress className={classes.progressBar} value={(doneCount / targetCount) * 100} variant="determinate" />
       <div className={classes.buttonBar}>
         <div className={classes.buttonsContainer}>
-          <FastRewindIcon onClick={() => handleArrowClick(FAST_REWIND_OFFSET)}/>
-          <RewindIcon onClick={() => handleArrowClick(REWIND_OFFSET)}/>
+          <FastRewindIcon onClick={() => handleArrowClick(FAST_REWIND_OFFSET)} />
+          <RewindIcon onClick={() => handleArrowClick(REWIND_OFFSET)} />
         </div>
         <div className={classes.buttonsContainer}>
-          <ForwardIcon onClick={() => handleArrowClick(FORWARD_OFFSET)}/>
-          <FastForwardIcon onClick={() => handleArrowClick(FAST_FORWARD_OFFSET)}/>
+          <ForwardIcon onClick={() => handleArrowClick(FORWARD_OFFSET)} />
+          <FastForwardIcon onClick={() => handleArrowClick(FAST_FORWARD_OFFSET)} />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Workout;
