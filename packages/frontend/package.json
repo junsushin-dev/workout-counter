@@ -38,21 +38,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "plugins": [
-      "simple-import-sort",
-      "prettier"
-    ],
-    "rules": {
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "prettier/prettier": "error"
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
