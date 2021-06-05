@@ -12,7 +12,7 @@ export function ExercisesTab() {
       <Route exact path={path}>
         <ExercisesList />
       </Route>
-      <Route path={`${path}/new`}>
+      <Route path={['/new', '/edit'].map((subPath) => path + subPath)}>
         <ExercisesForm />
       </Route>
     </>
