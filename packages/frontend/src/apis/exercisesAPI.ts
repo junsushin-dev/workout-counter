@@ -1,4 +1,4 @@
-import { AddExerciseDTO } from '../types';
+import { AddExerciseDTO, IExercise } from '../types';
 import { customFetch } from '../utils/customFetch';
 
 export const getExercises = async () => {
@@ -18,4 +18,20 @@ export const addExercise = async (exercise: AddExerciseDTO) => {
   });
 
   return addedExercise;
+};
+
+export const editExercise = async ({ id, name, count }: IExercise) => {
+  const editedExercise = await customFetch(`/api/exercises/${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      count,
+    }),
+  });
+
+  return editedExercise;
 };
