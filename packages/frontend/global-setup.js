@@ -1,3 +1,3 @@
 module.exports = async () => {
-  process.env.TZ = 'Asia/Seoul'; 
+  process.env.TZ = 'Asia/Seoul';
 };

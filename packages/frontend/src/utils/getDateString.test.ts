@@ -1,7 +1,6 @@
 import { getDateString } from './getDateString';
 
 describe('test getDateString function', () => {
-
   describe('timezone should be set to Asia/Seoul(UTC+09:00)', () => {
     expect(new Date().getTimezoneOffset()).toBe(-540);
   });
@@ -11,7 +10,7 @@ describe('test getDateString function', () => {
     const date = new Date(dateString);
     it('returns 2021-01-14', () => {
       expect(getDateString(date)).toBe('2021-01-14');
-    })
+    });
   });
 
   describe('when given KST(UTC+09:00) date object at 2021-01-15 00:00', () => {
@@ -19,7 +18,6 @@ describe('test getDateString function', () => {
     const date = new Date(dateString);
     it('returns 2021-01-15', () => {
       expect(getDateString(date)).toBe('2021-01-15');
-    })
+    });
   });
-
 });

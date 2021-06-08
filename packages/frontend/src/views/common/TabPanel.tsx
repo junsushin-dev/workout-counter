@@ -17,5 +17,5 @@ export function TabPanel({ children, index, value }: TabPanelProps) {
     >
       {value === index && children}
     </div>
-  )
+  );
 }

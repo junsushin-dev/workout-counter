@@ -11,8 +11,8 @@ function DateNav() {
   const [date, setDate] = useRecoilState(dateState);
 
   const handleDateChange = (dayOffset: number) => {
-    setDate(prevDate => new Date(prevDate.getTime() + dayOffset * DAY_MILLISEC));
-  }
+    setDate((prevDate) => new Date(prevDate.getTime() + dayOffset * DAY_MILLISEC));
+  };
 
   return (
     <div>
@@ -20,11 +20,11 @@ function DateNav() {
         <ChevronLeft />
       </IconButton>
       {date.toLocaleDateString()}
-      <IconButton onClick={() =>handleDateChange(+1)}>
+      <IconButton onClick={() => handleDateChange(+1)}>
         <ChevronRight />
       </IconButton>
     </div>
-  )
+  );
 }
 
 export default DateNav;

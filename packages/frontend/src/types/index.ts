@@ -4,6 +4,8 @@ export interface IExercise {
   count: number;
 }
 
+export type AddExerciseDTO = Omit<IExercise, 'id'>;
+
 export interface IRoutine {
   id: number;
   name: string;

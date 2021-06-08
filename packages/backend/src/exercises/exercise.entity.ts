@@ -2,6 +2,7 @@ import { Routine } from 'src/routines/routine.entity';
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinTable,
   ManyToMany,
@@ -31,4 +32,7 @@ export class Exercise {
   @Column()
   @UpdateDateColumn()
   updated_at: Date;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 }

@@ -10,7 +10,7 @@ import { Exercise } from './exercise.entity';
 export class ExercisesService {
   constructor(
     @InjectRepository(Exercise)
-    private exercisesRepository: Repository<Exercise>,
+    private exercisesRepository: Repository<Exercise>
   ) {}
 
   async create(createExerciseDTO: CreateExerciseDTO): Promise<Exercise> {
@@ -35,6 +35,6 @@ export class ExercisesService {
   }
 
   async remove(id: string): Promise<void> {
-    await this.exercisesRepository.delete(id);
+    await this.exercisesRepository.softDelete(id);
   }
 }
