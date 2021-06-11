@@ -31,11 +31,12 @@ export class WorkoutsService {
   }
 
   async findAll(date: Date) {
-    return this.workoutRepository.find({
-      where: {
-        date,
-      },
-    });
+    const workoutsInDB = await this.workoutRepository.find({ where: { date } });
+    const workoutsToSend = workoutsInDB.map((workout) => ({
+      ...workout,
+      exercise: { name: workout.exercise_name, count: workout.exercise_count },
+    }));
+    return workoutsToSend;
   }
 
   async updateDoneCount(id: number, count: number) {
