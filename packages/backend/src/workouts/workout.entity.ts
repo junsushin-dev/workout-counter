@@ -1,22 +1,15 @@
-import { Exercise } from 'src/exercises/exercise.entity';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Workout {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Exercise)
-  @JoinColumn({ name: 'exercise_id' })
-  exercise: Exercise;
+  @Column('varchar', { length: 15 })
+  exercise_name: string;
+
+  @Column()
+  exercise_count: number;
 
   // @ManyToOne(() => User)
   // user: User;

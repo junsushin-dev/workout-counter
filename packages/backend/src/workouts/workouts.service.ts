@@ -23,7 +23,8 @@ export class WorkoutsService {
     const workouts = exercises.map((exercise) => {
       const workout = new Workout();
       workout.date = date;
-      workout.exercise = exercise;
+      workout.exercise_name = exercise.name;
+      workout.exercise_count = exercise.count;
       return workout;
     });
     return this.workoutRepository.save(workouts);
@@ -34,7 +35,6 @@ export class WorkoutsService {
       where: {
         date,
       },
-      relations: ['exercise'],
     });
   }
 
