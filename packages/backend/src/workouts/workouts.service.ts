@@ -24,18 +24,16 @@ export class WorkoutsService {
       const workout = new Workout();
       workout.date = date;
       workout.exercise = exercise;
+      workout.exercise_name = exercise.name;
+      workout.exercise_count = exercise.count;
       return workout;
     });
     return this.workoutRepository.save(workouts);
   }
 
   async findAll(date: Date) {
-    return this.workoutRepository.find({
-      where: {
-        date,
-      },
-      relations: ['exercise'],
-    });
+    const workoutsInDB = await this.workoutRepository.find({ where: { date }, relations: ['exercise'] });
+    return workoutsInDB;
   }
 
   async updateDoneCount(id: number, count: number) {

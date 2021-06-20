@@ -14,7 +14,8 @@ export interface IRoutine {
 
 export interface IWorkout {
   id: number;
-  exercise: IExercise;
   doneCount: number;
   date: string;
+  exercise_name: string;
+  exercise_count: number;
 }

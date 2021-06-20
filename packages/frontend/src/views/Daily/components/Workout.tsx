@@ -59,20 +59,16 @@ interface IProps {
 }
 
 function Workout({ date, workout }: IProps) {
-  const {
-    id,
-    exercise: { name, count: targetCount },
-    doneCount: done,
-  } = workout;
+  const { id, doneCount: done, exercise_name: exerciseName, exercise_count: exerciseCount } = workout;
 
   const classes = useStyles();
   const [doneCount, setDoneCount] = useState(done);
-  const isFinished = doneCount === targetCount;
+  const isFinished = doneCount === exerciseCount;
 
-  const progressText = `${doneCount} / ${targetCount}`;
+  const progressText = `${doneCount} / ${exerciseCount}`;
 
   const handleArrowClick = (offset: number) => {
-    const newCount = Math.min(Math.max(0, doneCount + offset), targetCount);
+    const newCount = Math.min(Math.max(0, doneCount + offset), exerciseCount);
     setDoneCount(newCount);
     updateDoneCount(id, date, newCount);
   };
@@ -81,12 +77,12 @@ function Workout({ date, workout }: IProps) {
     <div className={classes.fadeInOutContainer}>
       <div className={classes.headerBar}>
         <Box display="flex" flexDirection="row">
-          <Typography>{name}</Typography>
+          <Typography>{exerciseName}</Typography>
           {isFinished ? <DoneIcon /> : <InProgressIcon />}
         </Box>
         <Typography>{progressText}</Typography>
       </div>
-      <LinearProgress className={classes.progressBar} value={(doneCount / targetCount) * 100} variant="determinate" />
+      <LinearProgress className={classes.progressBar} value={(doneCount / exerciseCount) * 100} variant="determinate" />
       <div className={classes.buttonBar}>
         <div className={classes.buttonsContainer}>
           <FastRewindIcon onClick={() => handleArrowClick(FAST_REWIND_OFFSET)} />
