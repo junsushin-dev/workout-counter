@@ -18,6 +18,12 @@ export class Workout {
   @JoinColumn({ name: 'exercise_id' })
   exercise: Exercise;
 
+  @Column('varchar', { length: 15 })
+  exercise_name: string;
+
+  @Column()
+  exercise_count: number;
+
   // @ManyToOne(() => User)
   // user: User;
 
