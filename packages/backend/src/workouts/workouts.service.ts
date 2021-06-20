@@ -32,7 +32,7 @@ export class WorkoutsService {
   }
 
   async findAll(date: Date) {
-    const workoutsInDB = await this.workoutRepository.find({ where: { date }, relations: ['exercise'] });
+    const workoutsInDB = await this.workoutRepository.find({ where: { date } });
     return workoutsInDB;
   }
 
