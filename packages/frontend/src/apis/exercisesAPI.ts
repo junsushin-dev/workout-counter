@@ -35,3 +35,11 @@ export const editExercise = async ({ id, name, count }: IExercise) => {
 
   return editedExercise;
 };
+
+export const deleteExercises = async (exerciseIds: (string | number)[]) => {
+  exerciseIds.map((id) =>
+    customFetch(`/api/exercises/${id}`, {
+      method: 'DELETE',
+    })
+  );
+};

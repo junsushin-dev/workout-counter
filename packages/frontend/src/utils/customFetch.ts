@@ -5,5 +5,7 @@ export const customFetch = async (input: RequestInfo, init?: RequestInit) => {
     throw new Error(`${res.status.toString()} ${res.statusText}`);
   }
 
+  if (init?.method === 'DELETE') return;
+
   return await res.json();
 };
