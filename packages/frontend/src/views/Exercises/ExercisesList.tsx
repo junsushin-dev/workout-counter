@@ -1,6 +1,12 @@
 import { Box, Button } from '@material-ui/core';
-import { DataGrid, GridColDef, GridEditCellPropsParams } from '@material-ui/data-grid';
-import React from 'react';
+import {
+  DataGrid,
+  GridColDef,
+  GridEditCellPropsParams,
+  GridRowId,
+  GridSelectionModelChangeParams,
+} from '@material-ui/data-grid';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { editExercise } from '../../apis/exercisesAPI';
@@ -11,6 +17,8 @@ import { ErrorMessage } from '../common/ErrorMessage';
 export function ExercisesList() {
   const exercisesQuery = useExercises();
   const history = useHistory();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectionModel, setSelectionModel] = useState<GridRowId[]>([]);
 
   if (exercisesQuery.isIdle || exercisesQuery.isLoading) {
     return <CenteredProgress />;
@@ -22,6 +30,12 @@ export function ExercisesList() {
 
   const exercises = exercisesQuery.data;
 
+  const columns: GridColDef[] = [
+    { field: 'name', headerName: 'Name', width: 150, editable: true },
+    { field: 'count', headerName: 'Count', width: 100, editable: true },
+    // { field: 'weight', headerName: 'Weight', width: 100, editable: true },
+  ];
+
   const handleEditCellChangeCommited = ({ id, field, props }: GridEditCellPropsParams) => {
     if (typeof id === 'string') {
       id = parseInt(id);
@@ -32,21 +46,25 @@ export function ExercisesList() {
     editExercise(editExerciseDTO);
   };
 
-  const columns: GridColDef[] = [
-    { field: 'name', headerName: 'Name', width: 150, editable: true },
-    { field: 'count', headerName: 'Count', width: 100, editable: true },
-    // { field: 'weight', headerName: 'Weight', width: 100, editable: true },
-  ];
+  const handleSelectionModelChange = (newSelection: GridSelectionModelChangeParams) => {
+    setSelectionModel(newSelection.selectionModel);
+  };
 
-  const handleClick = () => history.push('/exercises/new');
+  const handleAddButtonClick = () => history.push('/exercises/new');
 
   return (
     <Box display="flex" flexDirection="column" height="100%">
       <div style={{ flex: 1, width: '100%' }}>
-        <DataGrid rows={exercises} columns={columns} onEditCellChangeCommitted={handleEditCellChangeCommited} />
+        <DataGrid
+          rows={exercises}
+          columns={columns}
+          onEditCellChangeCommitted={handleEditCellChangeCommited}
+          onSelectionModelChange={handleSelectionModelChange}
+          checkboxSelection
+        />
       </div>
       <Box padding={2}>
-        <Button variant="contained" color="primary" onClick={handleClick}>
+        <Button variant="contained" color="primary" onClick={handleAddButtonClick}>
           Add Exercise
         </Button>
       </Box>
