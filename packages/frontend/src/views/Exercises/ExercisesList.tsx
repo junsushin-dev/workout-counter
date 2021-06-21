@@ -7,25 +7,36 @@ import {
   GridSelectionModelChangeParams,
 } from '@material-ui/data-grid';
 import React, { useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
-import { editExercise } from '../../apis/exercisesAPI';
+import { deleteExercises, editExercise } from '../../apis/exercisesAPI';
 import { useExercises } from '../../hooks/useExercises';
 import CenteredProgress from '../common/CenteredProgress';
 import { ErrorMessage } from '../common/ErrorMessage';
 
 export function ExercisesList() {
+  const queryClient = useQueryClient();
   const exercisesQuery = useExercises();
   const history = useHistory();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectionModel, setSelectionModel] = useState<GridRowId[]>([]);
+  const mutation = useMutation(deleteExercises, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('exercises');
+      setSelectionModel([]);
+    },
+  });
 
-  if (exercisesQuery.isIdle || exercisesQuery.isLoading) {
+  if (exercisesQuery.isIdle || exercisesQuery.isLoading || mutation.isLoading) {
     return <CenteredProgress />;
   }
 
   if (exercisesQuery.isError) {
     return <ErrorMessage message={exercisesQuery.error.message} />;
+  }
+
+  if (mutation.isError && mutation.error instanceof Error) {
+    return <ErrorMessage message={mutation.error.message} />;
   }
 
   const exercises = exercisesQuery.data;
@@ -50,6 +61,10 @@ export function ExercisesList() {
     setSelectionModel(newSelection.selectionModel);
   };
 
+  const handleDeleteButtonClick = () => {
+    mutation.mutate(selectionModel);
+  };
+
   const handleAddButtonClick = () => history.push('/exercises/new');
 
   return (
@@ -65,7 +80,7 @@ export function ExercisesList() {
       </div>
       <Box padding={2}>
         {selectionModel.length > 0 ? (
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={handleDeleteButtonClick}>
             Delete Exercise
           </Button>
         ) : (
