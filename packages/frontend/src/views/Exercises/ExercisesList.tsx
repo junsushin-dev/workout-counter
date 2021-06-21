@@ -64,9 +64,15 @@ export function ExercisesList() {
         />
       </div>
       <Box padding={2}>
-        <Button variant="contained" color="primary" onClick={handleAddButtonClick}>
-          Add Exercise
-        </Button>
+        {selectionModel.length > 0 ? (
+          <Button variant="contained" color="secondary">
+            Delete Exercise
+          </Button>
+        ) : (
+          <Button variant="contained" color="primary" onClick={handleAddButtonClick}>
+            Add Exercise
+          </Button>
+        )}
       </Box>
     </Box>
   );
