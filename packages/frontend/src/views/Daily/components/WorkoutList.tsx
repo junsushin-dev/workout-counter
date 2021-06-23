@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 
@@ -24,13 +24,22 @@ function WorkoutList() {
   const workouts = workoutQuery.data;
 
   return (
-    <Grid container spacing={2}>
-      {workouts.map((workout) => (
-        <Grid key={getDateString(date) + workout.exercise_name} item xs={12}>
-          <Workout workout={workout} date={date} />
+    <Box display="flex" flexDirection="column" height="100%">
+      <div style={{ flex: 1, width: '100%' }}>
+        <Grid container spacing={2}>
+          {workouts.map((workout) => (
+            <Grid key={getDateString(date) + workout.exercise_name} item xs={12}>
+              <Workout workout={workout} date={date} />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
+      </div>
+      <Box display="flex" justifyContent="space-around">
+        <Button variant="contained" color="primary">
+          Reset Workout
+        </Button>
+      </Box>
+    </Box>
   );
 }
 
