@@ -57,3 +57,11 @@ export const createWorkoutsByRoutine = async (date: Date, routine: IRoutine): Pr
   const workouts: IWorkout[] = await createWorkoutsByExercises(date, routine.exercises);
   return workouts;
 };
+
+export const deleteWorkout = async (workoutIds: number[]) => {
+  workoutIds.map((id) =>
+    customFetch(`/api/workouts/${id}`, {
+      method: 'DELETE',
+    })
+  );
+};
