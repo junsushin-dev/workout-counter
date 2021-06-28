@@ -9,10 +9,10 @@ function Daily() {
   const titleText = "Today's Workout";
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" height="100%">
       <DateNav />
       <Typography>{titleText}</Typography>
-      <Box p={2}>
+      <Box p={2} display="flex" flexDirection="column" height="100%">
         <Suspense fallback={<CenteredProgress />}>
           <DailyContent />
         </Suspense>
