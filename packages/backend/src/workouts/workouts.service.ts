@@ -45,4 +45,9 @@ export class WorkoutsService {
   async remove(id: number) {
     await this.workoutRepository.delete(id);
   }
+
+  async removeAll(date: Date) {
+    const workouts = await this.workoutRepository.find({ where: { date } });
+    await this.workoutRepository.remove(workouts);
+  }
 }

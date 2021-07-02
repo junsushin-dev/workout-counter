@@ -18,6 +18,11 @@ export class WorkoutsController {
     return this.workoutsService.findAll(date);
   }
 
+  @Delete()
+  async deleteAll(@Query('date') date: Date) {
+    return this.workoutsService.removeAll(date);
+  }
+
   // @Get(':id')
   // async find(id) {
   //   return this.workoutsService.findOne(id);
