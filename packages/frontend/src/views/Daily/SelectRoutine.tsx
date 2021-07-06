@@ -3,16 +3,16 @@ import React from 'react';
 import { useQueryClient } from 'react-query';
 import { useRecoilValue } from 'recoil';
 
-import { createWorkoutsByRoutine } from '../../../apis/workoutsAPI';
-import { useRoutines } from '../../../hooks/useRoutines';
-import { IRoutine } from '../../../types';
-import { getDateString } from '../../../utils/getDateString';
-import CenteredProgress from '../../common/CenteredProgress';
-import { ErrorMessage } from '../../common/ErrorMessage';
-import { dateState } from '../states';
-import RoutineItem from './RoutineItem';
+import { createWorkoutsByRoutine } from '../../apis/workoutsAPI';
+import { useRoutines } from '../../hooks/useRoutines';
+import { IRoutine } from '../../types';
+import { getDateString } from '../../utils/getDateString';
+import CenteredProgress from '../common/CenteredProgress';
+import { ErrorMessage } from '../common/ErrorMessage';
+import RoutineItem from '../Routines/RoutineList/RoutineItem';
+import { dateState } from './states';
 
-function RoutineList() {
+function SelectRoutine() {
   const routinesQuery = useRoutines();
   const queryClient = useQueryClient();
   const date = useRecoilValue(dateState);
@@ -45,4 +45,4 @@ function RoutineList() {
   );
 }
 
-export default RoutineList;
+export default SelectRoutine;
