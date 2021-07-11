@@ -7,7 +7,7 @@ export const getRoutines = async (): Promise<IRoutine[]> => {
   return routines;
 };
 
-export const addRoutine = async (routine: AddRoutineDTO) => {
+export const addRoutine = async (routine: AddRoutineDTO): Promise<IRoutine> => {
   const addedRoutine = await customFetch('/api/routines', {
     method: 'POST',
     headers: {
