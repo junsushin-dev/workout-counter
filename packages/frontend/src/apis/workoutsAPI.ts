@@ -29,12 +29,6 @@ export const updateDoneCount = async (id: number, date: Date, doneCount: number)
   return updatedWorkout;
 };
 
-export const getRoutines = async (): Promise<IRoutine[]> => {
-  const routines = await customFetch('/api/routines');
-
-  return routines;
-};
-
 const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
 
