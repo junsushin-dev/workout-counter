@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import { AddRoutinePage } from './AddRoutinePage';
-import { EditRoutinePage } from './EditRoutinePage';
+import { EditRoutinePage } from './EditRoutine/EditRoutinePage';
 import { RoutineListPage } from './RoutineListPage';
 
 export function RoutinesTab() {
