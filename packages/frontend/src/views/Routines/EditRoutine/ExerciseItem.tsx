@@ -1,5 +1,6 @@
 import { Card, CardContent, styled, Typography } from '@material-ui/core';
 import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 
 import { IExercise } from '../../../types';
 
@@ -16,15 +17,20 @@ const StyledCardContent = styled(CardContent)({
 
 interface ExerciseItemProps {
   exercise: IExercise;
+  index: number;
 }
 
-export function ExerciseItem({ exercise }: ExerciseItemProps) {
+export function ExerciseItem({ exercise, index }: ExerciseItemProps) {
   return (
-    <Card>
-      <StyledCardContent>
-        <Typography>{exercise.name}</Typography>
-        <Typography>× {exercise.count}</Typography>
-      </StyledCardContent>
-    </Card>
+    <Draggable key={exercise.id} draggableId={exercise.id.toString()} index={index}>
+      {(provided, snapshot) => (
+        <Card ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+          <StyledCardContent>
+            <Typography>{exercise.name}</Typography>
+            <Typography>× {exercise.count}</Typography>
+          </StyledCardContent>
+        </Card>
+      )}
+    </Draggable>
   );
 }

@@ -1,6 +1,7 @@
 import { Box, Grid, Paper, styled, Typography } from '@material-ui/core';
 import { KeyboardArrowUp as KeyboardArrowUpIcon } from '@material-ui/icons';
 import React from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
 
 import { useExercises } from '../../../hooks/useExercises';
@@ -44,29 +45,41 @@ export function EditRoutinePage() {
   );
 
   return (
-    <GappedBox>
-      <Typography variant="h5">{routine.name}</Typography>
-      <GreyPaper>
-        <Grid container direction="column" spacing={2}>
-          {routine.exercises.map((exercise) => (
-            <Grid item key={exercise.id}>
-              <ExerciseItem exercise={exercise} />
-            </Grid>
-          ))}
-        </Grid>
-      </GreyPaper>
-      <Box>
-        <KeyboardArrowUpIcon fontSize="large" />
-      </Box>
-      <GreyPaper>
-        <Grid container direction="column" spacing={2}>
-          {addableExercises.map((exercise) => (
-            <Grid item key={exercise.id}>
-              <ExerciseItem exercise={exercise} />
-            </Grid>
-          ))}
-        </Grid>
-      </GreyPaper>
-    </GappedBox>
+    <DragDropContext onDragEnd={() => {}}>
+      <GappedBox>
+        <Typography variant="h5">{routine.name}</Typography>
+        <Droppable droppableId="included">
+          {(provided, snapshot) => (
+            <GreyPaper {...provided.droppableProps} ref={provided.innerRef}>
+              <Grid container direction="column" spacing={2}>
+                {routine.exercises.map((exercise, index) => (
+                  <Grid item key={exercise.id}>
+                    <ExerciseItem exercise={exercise} index={index} />
+                  </Grid>
+                ))}
+                {provided.placeholder}
+              </Grid>
+            </GreyPaper>
+          )}
+        </Droppable>
+        <Box>
+          <KeyboardArrowUpIcon fontSize="large" />
+        </Box>
+        <Droppable droppableId="excluded">
+          {(provided, snapshot) => (
+            <GreyPaper {...provided.droppableProps} ref={provided.innerRef}>
+              <Grid container direction="column" spacing={2}>
+                {addableExercises.map((exercise, index) => (
+                  <Grid item key={exercise.id}>
+                    <ExerciseItem exercise={exercise} index={index} />
+                  </Grid>
+                ))}
+                {provided.placeholder}
+              </Grid>
+            </GreyPaper>
+          )}
+        </Droppable>
+      </GappedBox>
+    </DragDropContext>
   );
 }
