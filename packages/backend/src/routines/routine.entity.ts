@@ -6,6 +6,7 @@ import {
   ManyToMany,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -34,4 +35,28 @@ export class Routine {
   @Column()
   @UpdateDateColumn()
   updated_at: Date;
+
+  @OneToMany(() => RoutineToExercise, (routineToExercise) => routineToExercise.routine)
+  public routineToExercises!: RoutineToExercise[];
+}
+
+@Entity()
+export class RoutineToExercise {
+  @PrimaryGeneratedColumn()
+  public id!: number;
+
+  @Column()
+  public routineId!: number;
+
+  @Column()
+  public exerciseId!: number;
+
+  @Column()
+  public order!: number;
+
+  @ManyToOne(() => Routine, (routine) => routine.routineToExercises)
+  public routine!: Routine;
+
+  @ManyToOne(() => Exercise, (exercise) => exercise.routineToExercises)
+  public exercise!: Exercise;
 }
