@@ -56,8 +56,18 @@ export class RoutinesService {
       relations: ['exercises'],
     });
 
-    routine.exercises = routine.exercises.filter((exercise) => exercise.id !== parseInt(exerciseId));
-    this.routineRepository.save(routine);
-    return routine;
+
+  convertToGetRoutineDTO(routine: Routine): GetRoutineDTO {
+    const { id, name, routineToExercises } = routine;
+
+    const orderedExercises = routineToExercises
+      .sort((a, b) => a.order - b.order)
+      .map((routineToExercise) => routineToExercise.exercise);
+
+    return {
+      id,
+      name,
+      exercises: orderedExercises,
+    };
   }
 }
