@@ -2,19 +2,19 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Exercise } from '../exercises/exercise.entity';
 import { AddExerciseToRoutineDTO } from './dto/add-exercise-to-routine.dto';
 import { CreateRoutineDTO } from './dto/create-routine.dto';
+import { GetRoutineDTO } from './dto/get-routine.dto';
 import { UpdateRoutineDTO } from './dto/update-routine.dto';
-import { Routine } from './routine.entity';
+import { Routine, RoutineToExercise } from './routine.entity';
 
 @Injectable()
 export class RoutinesService {
   constructor(
     @InjectRepository(Routine)
     private routineRepository: Repository<Routine>,
-    @InjectRepository(Exercise)
-    private exerciseRepository: Repository<Exercise>
+    @InjectRepository(RoutineToExercise)
+    private routineToExerciseRepository: Repository<RoutineToExercise>
   ) {}
 
   async create(createRoutineDTO: CreateRoutineDTO): Promise<Routine> {
@@ -24,11 +24,11 @@ export class RoutinesService {
   }
 
   async findAll(): Promise<Routine[]> {
-    return this.routineRepository.find({ relations: ['exercises'] });
+    return this.routineRepository.find({ relations: ['routineToExercises', 'routineToExercises.exercise'] });
   }
 
   async findOne(id: string): Promise<Routine> {
-    return this.routineRepository.findOne(id, { relations: ['exercises'] });
+    return this.routineRepository.findOne(id, { relations: ['routineToExercises', 'routineToExercises.exercise'] });
   }
 
   async update(id: string, updateRoutineDTO: UpdateRoutineDTO) {
@@ -41,21 +41,24 @@ export class RoutinesService {
   }
 
   async addExercise(id: string, addExerciseToRoutineDTO: AddExerciseToRoutineDTO) {
-    const routine = await this.routineRepository.findOne(id, {
-      relations: ['exercises'],
-    });
-    const exercise = await this.exerciseRepository.findOne(addExerciseToRoutineDTO.exerciseId);
-    routine.exercises.push(exercise);
-    this.routineRepository.save(routine);
-    this.exerciseRepository.save(exercise);
-    return routine;
+    const routineToExercise = new RoutineToExercise();
+    routineToExercise.routineId = parseInt(id);
+    routineToExercise.exerciseId = parseInt(addExerciseToRoutineDTO.exerciseId);
+    routineToExercise.order = addExerciseToRoutineDTO.order;
+    this.routineToExerciseRepository.save(routineToExercise);
   }
 
   async removeExercise(id: string, exerciseId: string) {
     const routine = await this.routineRepository.findOne(id, {
-      relations: ['exercises'],
+      relations: ['routineToExercises', 'routineToExercises.exercise'],
     });
 
+    const routineToExercisesToRemove = routine.routineToExercises.filter(
+      (routineToExercise) => routineToExercise.exerciseId === parseInt(exerciseId)
+    );
+
+    await this.routineToExerciseRepository.remove(routineToExercisesToRemove);
+  }
 
   convertToGetRoutineDTO(routine: Routine): GetRoutineDTO {
     const { id, name, routineToExercises } = routine;
