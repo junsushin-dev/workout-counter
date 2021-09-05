@@ -14,6 +14,11 @@ export interface IRoutine {
 
 export type AddRoutineDTO = Omit<IRoutine, 'id' | 'exercises'>;
 
+export interface AddExerciseToRoutineDTO {
+  exerciseId: number;
+  order: number;
+}
+
 export interface IWorkout {
   id: number;
   doneCount: number;
