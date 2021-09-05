@@ -5,11 +5,7 @@ import { getDateString } from '../utils/getDateString';
 export const getWorkouts = async (date: Date): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
 
-  const workouts = await customFetch(`/api/workouts?date=${dateString}`, {
-    headers: {
-      Accept: 'application/json',
-    },
-  });
+  const workouts = await customFetch(`/api/workouts?date=${dateString}`);
 
   return workouts;
 };
@@ -20,9 +16,6 @@ export const updateDoneCount = async (id: number, date: Date, doneCount: number)
 
   const updatedWorkout = await customFetch(`/api/workouts/${id}`, {
     method: 'PATCH',
-    headers: {
-      Accept: 'application/json',
-    },
     body,
   });
 
@@ -34,10 +27,6 @@ const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Pr
 
   const workouts = await customFetch('/api/workouts', {
     method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({
       date: dateString,
       exerciseIds: exercises.map((exercise) => exercise.id),

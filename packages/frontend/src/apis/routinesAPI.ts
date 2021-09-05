@@ -16,10 +16,6 @@ export const getRoutine = async (id: number): Promise<IRoutine> => {
 export const addRoutine = async (routine: AddRoutineDTO): Promise<IRoutine> => {
   const addedRoutine = await customFetch('/api/routines', {
     method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(routine),
   });
 
