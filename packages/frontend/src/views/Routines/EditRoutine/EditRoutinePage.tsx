@@ -5,6 +5,11 @@ import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useMutation, useQueryClient } from 'react-query';
 import { useParams } from 'react-router-dom';
 
+import {
+  addExerciseToRoutine,
+  removeExerciseFromRoutine,
+  updateExerciseOrderInRoutine,
+} from '../../../apis/routinesAPI';
 import { useExercises } from '../../../hooks/useExercises';
 import { useRoutine } from '../../../hooks/useRoutine';
 import { IExercise, IRoutine } from '../../../types';
@@ -31,19 +36,44 @@ export function EditRoutinePage() {
   const queryClient = useQueryClient();
 
   // TODO: Change fetcher to API call
-  const updateRoutineExercisesMutation = useMutation((newExercises) => Promise.resolve(newExercises), {
-    onMutate: async (newExercises: IExercise[]) => {
-      const previousRoutine = queryClient.getQueryData<IRoutine>(`routines/${id}`);
-      if (previousRoutine) {
-        queryClient.setQueryData<IRoutine>(`routines/${id}`, {
-          ...previousRoutine,
-          exercises: newExercises,
-        });
-      }
+  const updateRoutineExercisesMutation = useMutation(
+    async (newExercises) => {
+      const newExercisesWithOrder = newExercises.map((newExercise, index) => ({ ...newExercise, order: index }));
+      const oldExercises = routineQuery.data?.exercises;
+      if (!oldExercises || !newExercises) return Promise.reject();
 
-      return { previousRoutine };
+      const addedExercises = newExercisesWithOrder.filter((newExercise) =>
+        oldExercises.every((oldExercise) => oldExercise.id !== newExercise.id)
+      );
+      const updatedExercises = newExercisesWithOrder.filter((newExercise) =>
+        oldExercises.some((oldExercise) => oldExercise.id === newExercise.id)
+      );
+      const removedExercises = oldExercises.filter((oldExercise) =>
+        newExercises.every((newExercise) => oldExercise.id !== newExercise.id)
+      );
+
+      const routineId = parseInt(id);
+
+      return Promise.all([
+        ...addedExercises.map((exercise) => addExerciseToRoutine(routineId, exercise.id, exercise.order)),
+        ...updatedExercises.map((exercise) => updateExerciseOrderInRoutine(routineId, exercise.id, exercise.order)),
+        ...removedExercises.map((exercise) => removeExerciseFromRoutine(routineId, exercise.id)),
+      ]);
     },
-  });
+    {
+      onMutate: async (newExercises: IExercise[]) => {
+        const previousRoutine = queryClient.getQueryData<IRoutine>(`routines/${id}`);
+        if (previousRoutine) {
+          queryClient.setQueryData<IRoutine>(`routines/${id}`, {
+            ...previousRoutine,
+            exercises: newExercises,
+          });
+        }
+
+        return { previousRoutine };
+      },
+    }
+  );
 
   if (routineQuery.isIdle || routineQuery.isLoading || exercisesQuery.isIdle || exercisesQuery.isLoading) {
     return <CenteredProgress />;
@@ -75,10 +105,10 @@ export function EditRoutinePage() {
     if (start === finish) {
       if (source.droppableId === 'excluded') return;
       const newExercises = [...start];
-      const moved = newExercises.find((item) => item.id.toString() === draggableId);
-      if (!moved) return;
+      const dragged = newExercises.find((item) => item.id.toString() === draggableId);
+      if (!dragged) return;
       newExercises.splice(source.index, 1);
-      newExercises.splice(destination.index, 0, moved);
+      newExercises.splice(destination.index, 0, dragged);
       updateRoutineExercisesMutation.mutate(newExercises);
       return;
     }
@@ -86,10 +116,10 @@ export function EditRoutinePage() {
     // move item between columns
     const newStartColumn = [...start];
     const newFinishColumn = [...finish];
-    const moved = newStartColumn.find((item) => item.id.toString() === draggableId);
-    if (!moved) return;
+    const dragged = newStartColumn.find((item) => item.id.toString() === draggableId);
+    if (!dragged) return;
     newStartColumn.splice(source.index, 1);
-    newFinishColumn.splice(destination.index, 0, moved);
+    newFinishColumn.splice(destination.index, 0, dragged);
     const newExercises = source.droppableId === 'included' ? newStartColumn : newFinishColumn;
     updateRoutineExercisesMutation.mutate(newExercises);
   };
