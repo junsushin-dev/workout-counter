@@ -21000,6 +21000,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsx-a11y", "virtual:28668c5a7ffa974ec9f687f03ac7f54470f83c1e071ee5ae0a0441072f4384695f47d59795087743b60d7b46d216fcf3bef2fc19ff9b523da33772962bf23712#npm:6.4.1"],
             ["eslint-plugin-react", "virtual:28668c5a7ffa974ec9f687f03ac7f54470f83c1e071ee5ae0a0441072f4384695f47d59795087743b60d7b46d216fcf3bef2fc19ff9b523da33772962bf23712#npm:7.23.2"],
             ["eslint-plugin-react-hooks", "virtual:28668c5a7ffa974ec9f687f03ac7f54470f83c1e071ee5ae0a0441072f4384695f47d59795087743b60d7b46d216fcf3bef2fc19ff9b523da33772962bf23712#npm:4.2.0"],
+            ["eslint-plugin-simple-import-sort", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:7.0.0"],
             ["eslint-plugin-testing-library", "virtual:eae91e8c060f5af91769bb2f1ffe9168cb31fd68f622b98ab37a81b1988171b9d637bb26f755347f1ba03069b74f5f4926b5a98c2cb6280412877d4d59caeace#npm:3.10.2"],
             ["eslint-webpack-plugin", "virtual:eae91e8c060f5af91769bb2f1ffe9168cb31fd68f622b98ab37a81b1988171b9d637bb26f755347f1ba03069b74f5f4926b5a98c2cb6280412877d4d59caeace#npm:2.5.4"],
             ["file-loader", "virtual:eae91e8c060f5af91769bb2f1ffe9168cb31fd68f622b98ab37a81b1988171b9d637bb26f755347f1ba03069b74f5f4926b5a98c2cb6280412877d4d59caeace#npm:6.1.1"],
