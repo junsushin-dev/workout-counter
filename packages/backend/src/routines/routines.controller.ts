@@ -1,8 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 
-import { AddExerciseToRoutineDTO } from './dto/add-exercise-to-routine.dto';
-import { CreateRoutineDTO } from './dto/create-routine.dto';
-import { UpdateRoutineDTO } from './dto/update-routine.dto';
+import { AddExerciseToRoutineDTO } from './dto/exercise-to-routine.dto';
+import { CreateRoutineDTO, UpdateRoutineDTO } from './dto/routine.dto';
 import { RoutinesService } from './routines.service';
 
 @Controller('routines')

@@ -2,10 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { AddExerciseToRoutineDTO } from './dto/add-exercise-to-routine.dto';
-import { CreateRoutineDTO } from './dto/create-routine.dto';
-import { GetRoutineDTO } from './dto/get-routine.dto';
-import { UpdateRoutineDTO } from './dto/update-routine.dto';
+import { AddExerciseToRoutineDTO } from './dto/exercise-to-routine.dto';
+import { CreateRoutineDTO, GetRoutineDTO, UpdateRoutineDTO } from './dto/routine.dto';
 import { Routine, RoutineToExercise } from './routine.entity';
 
 @Injectable()
