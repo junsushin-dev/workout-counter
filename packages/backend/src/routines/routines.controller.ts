@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 
-import { AddExerciseToRoutineDTO } from './dto/exercise-to-routine.dto';
+import { AddExerciseToRoutineDTO, UpdateExerciseToRoutineDTO } from './dto/exercise-to-routine.dto';
 import { CreateRoutineDTO, UpdateRoutineDTO } from './dto/routine.dto';
 import { RoutinesService } from './routines.service';
 
@@ -40,6 +40,18 @@ export class RoutineController {
   @Post(':id/exercises')
   async addExercise(@Param('id') id: string, @Body() addExerciseToRoutineDTO: AddExerciseToRoutineDTO) {
     await this.routineService.addExercise(id, addExerciseToRoutineDTO);
+    const routine = await this.routineService.findOne(id);
+
+    return this.routineService.convertToGetRoutineDTO(routine);
+  }
+
+  @Patch(':id/exercises/:exerciseId')
+  async updateExercise(
+    @Param('id') id: string,
+    @Param('exerciseId') exerciseId: string,
+    @Body() updateExerciseToRoutineDTO: UpdateExerciseToRoutineDTO
+  ) {
+    await this.routineService.updateExercise(exerciseId, updateExerciseToRoutineDTO.order);
     const routine = await this.routineService.findOne(id);
 
     return this.routineService.convertToGetRoutineDTO(routine);

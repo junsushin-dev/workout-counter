@@ -46,6 +46,12 @@ export class RoutinesService {
     this.routineToExerciseRepository.save(routineToExercise);
   }
 
+  async updateExercise(exerciseId: string, order: number) {
+    const routineToExercise = await this.routineToExerciseRepository.findOne({ where: { exerciseId } });
+    routineToExercise.order = order;
+    await this.routineToExerciseRepository.save(routineToExercise);
+  }
+
   async removeExercise(id: string, exerciseId: string) {
     const routine = await this.routineRepository.findOne(id, {
       relations: ['routineToExercises', 'routineToExercises.exercise'],
