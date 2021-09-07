@@ -2,8 +2,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ManyToOne,
   OneToMany,
@@ -23,10 +21,6 @@ export class Routine {
 
   // @ManyToOne(() => UserInputError, (user) => user.routines)
   // user: User;
-
-  @ManyToMany(() => Exercise)
-  @JoinTable()
-  exercises: Exercise[];
 
   @Column()
   @CreateDateColumn()

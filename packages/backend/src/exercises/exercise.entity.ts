@@ -1,11 +1,9 @@
-import { Routine, RoutineToExercise } from 'src/routines/routine.entity';
+import { RoutineToExercise } from 'src/routines/routine.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -21,10 +19,6 @@ export class Exercise {
 
   @Column()
   count: number;
-
-  @ManyToMany(() => Routine)
-  @JoinTable()
-  routines: Routine[];
 
   @Column()
   @CreateDateColumn()
