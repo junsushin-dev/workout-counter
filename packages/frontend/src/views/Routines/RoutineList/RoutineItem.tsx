@@ -1,12 +1,7 @@
 import { Card, CardActionArea, CardContent, styled, Typography } from '@material-ui/core';
 import React from 'react';
-import { useQueryClient } from 'react-query';
-import { useRecoilValue } from 'recoil';
 
-import { createWorkoutsByRoutine } from '../../../apis/workoutsAPI';
 import { IRoutine } from '../../../types';
-import { getDateString } from '../../../utils/getDateString';
-import { dateState } from '../states';
 import ExerciseItem from './ExerciseItem';
 
 const TextAlignLeftCardContent = styled(CardContent)({
@@ -15,20 +10,14 @@ const TextAlignLeftCardContent = styled(CardContent)({
 
 interface IProps {
   routine: IRoutine;
+  onClick: React.MouseEventHandler<HTMLElement>;
 }
 
-function RoutineItem({ routine }: IProps) {
-  const date = useRecoilValue(dateState);
+function RoutineItem({ routine, onClick }: IProps) {
   const { name, exercises } = routine;
-  const queryClient = useQueryClient();
-
-  const handleClick = async () => {
-    await createWorkoutsByRoutine(date, routine);
-    queryClient.invalidateQueries(`workouts/${getDateString(date)}`);
-  };
 
   return (
-    <Card elevation={2} onClick={handleClick}>
+    <Card elevation={2} onClick={onClick}>
       <CardActionArea>
         <TextAlignLeftCardContent>
           <Typography variant="h5" component="h3" gutterBottom>

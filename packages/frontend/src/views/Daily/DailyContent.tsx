@@ -8,7 +8,7 @@ import { DAY_MILLISECS, getDateString } from '../../utils/getDateString';
 import CenteredProgress from '../common/CenteredProgress';
 import { ErrorMessage } from '../common/ErrorMessage';
 import WorkoutList from './components/WorkoutList';
-import SelectRoutine from './SelectRoutine/RoutineList';
+import SelectRoutine from './SelectRoutine';
 import { dateState } from './states';
 
 export function DailyContent() {

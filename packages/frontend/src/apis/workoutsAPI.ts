@@ -5,11 +5,7 @@ import { getDateString } from '../utils/getDateString';
 export const getWorkouts = async (date: Date): Promise<IWorkout[]> => {
   const dateString = getDateString(date);
 
-  const workouts = await customFetch(`/api/workouts?date=${dateString}`, {
-    headers: {
-      Accept: 'application/json',
-    },
-  });
+  const workouts = await customFetch(`/api/workouts?date=${dateString}`);
 
   return workouts;
 };
@@ -20,19 +16,10 @@ export const updateDoneCount = async (id: number, date: Date, doneCount: number)
 
   const updatedWorkout = await customFetch(`/api/workouts/${id}`, {
     method: 'PATCH',
-    headers: {
-      Accept: 'application/json',
-    },
     body,
   });
 
   return updatedWorkout;
-};
-
-export const getRoutines = async (): Promise<IRoutine[]> => {
-  const routines = await customFetch('/api/routines');
-
-  return routines;
 };
 
 const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Promise<IWorkout[]> => {
@@ -40,10 +27,6 @@ const createWorkoutsByExercises = async (date: Date, exercises: IExercise[]): Pr
 
   const workouts = await customFetch('/api/workouts', {
     method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({
       date: dateString,
       exerciseIds: exercises.map((exercise) => exercise.id),
@@ -58,11 +41,10 @@ export const createWorkoutsByRoutine = async (date: Date, routine: IRoutine): Pr
   return workouts;
 };
 
-export const deleteWorkouts = async (workoutIds: number[]) => {
-  const requests = workoutIds.map((id) =>
-    customFetch(`/api/workouts/${id}`, {
-      method: 'DELETE',
-    })
-  );
-  await Promise.all(requests);
+export const deleteWorkouts = async (date: Date) => {
+  const dateString = getDateString(date);
+
+  await customFetch(`/api/workouts?date=${dateString}`, {
+    method: 'DELETE',
+  });
 };

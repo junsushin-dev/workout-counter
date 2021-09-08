@@ -10,25 +10,47 @@ on:
       - develop
 
 jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - id: diff
+        name: check diff
+        run: |
+          diff=$(git diff origin/${GITHUB_BASE_REF} -- packages/frontend)
+          if [ -z "$diff" ]
+          then
+            echo "no changes"
+            echo "::set-output name=changed::false"
+          else
+            echo "changes detected"
+            echo "::set-output name=changed::true"
+          fi
+
   build:
+    needs: check-changes
+    if: needs.check-changes.outputs.changed == 'true'
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [14.x]
-        
+
     defaults:
       run:
         working-directory: packages/frontend
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"

@@ -36,8 +36,7 @@ function WorkoutList() {
   const workouts = workoutQuery.data;
 
   const handleResetWorkout = () => {
-    const workoutIds = workouts.map((workout) => workout.id);
-    mutation.mutate(workoutIds);
+    mutation.mutate(date);
   };
 
   return (
