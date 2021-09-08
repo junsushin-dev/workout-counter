@@ -1,8 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 
-import { AddExerciseToRoutineDTO } from './dto/add-exercise-to-routine.dto';
-import { CreateRoutineDTO } from './dto/create-routine.dto';
-import { UpdateRoutineDTO } from './dto/update-routine.dto';
+import { AddExerciseToRoutineDTO, UpdateExerciseToRoutineDTO } from './dto/exercise-to-routine.dto';
+import { CreateRoutineDTO, UpdateRoutineDTO } from './dto/routine.dto';
 import { RoutinesService } from './routines.service';
 
 @Controller('routines')
@@ -16,12 +15,16 @@ export class RoutineController {
 
   @Get()
   async findAll() {
-    return this.routineService.findAll();
+    const routines = await this.routineService.findAll();
+
+    return routines.map(this.routineService.convertToGetRoutineDTO);
   }
 
   @Get(':id')
   async find(id) {
-    return this.routineService.findOne(id);
+    const routine = await this.routineService.findOne(id);
+
+    return this.routineService.convertToGetRoutineDTO(routine);
   }
 
   @Put(':id')
@@ -36,11 +39,29 @@ export class RoutineController {
 
   @Post(':id/exercises')
   async addExercise(@Param('id') id: string, @Body() addExerciseToRoutineDTO: AddExerciseToRoutineDTO) {
-    return this.routineService.addExercise(id, addExerciseToRoutineDTO);
+    await this.routineService.addExercise(id, addExerciseToRoutineDTO);
+    const routine = await this.routineService.findOne(id);
+
+    return this.routineService.convertToGetRoutineDTO(routine);
+  }
+
+  @Patch(':id/exercises/:exerciseId')
+  async updateExercise(
+    @Param('id') id: string,
+    @Param('exerciseId') exerciseId: string,
+    @Body() updateExerciseToRoutineDTO: UpdateExerciseToRoutineDTO
+  ) {
+    await this.routineService.updateExercise(exerciseId, updateExerciseToRoutineDTO.order);
+    const routine = await this.routineService.findOne(id);
+
+    return this.routineService.convertToGetRoutineDTO(routine);
   }
 
   @Delete(':id/exercises/:exerciseId')
   async removeExercise(@Param('id') id: string, @Param('exerciseId') exerciseId: string) {
-    return this.routineService.removeExercise(id, exerciseId);
+    await this.routineService.removeExercise(id, exerciseId);
+    const routine = await this.routineService.findOne(id);
+
+    return this.routineService.convertToGetRoutineDTO(routine);
   }
 }
