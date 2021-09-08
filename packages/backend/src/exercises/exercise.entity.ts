@@ -1,11 +1,10 @@
-import { Routine } from 'src/routines/routine.entity';
+import { RoutineToExercise } from 'src/routines/routine.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -21,10 +20,6 @@ export class Exercise {
   @Column()
   count: number;
 
-  @ManyToMany(() => Routine)
-  @JoinTable()
-  routines: Routine[];
-
   @Column()
   @CreateDateColumn()
   created_at: Date;
@@ -35,4 +30,7 @@ export class Exercise {
 
   @DeleteDateColumn()
   deleted_at: Date;
+
+  @OneToMany(() => RoutineToExercise, (routineToExercise) => routineToExercise.exercise)
+  public routineToExercises!: RoutineToExercise[];
 }

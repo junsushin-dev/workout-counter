@@ -9,6 +9,7 @@ import { RecoilRoot } from 'recoil';
 
 import Daily from './views/Daily';
 import { ExercisesTab } from './views/Exercises';
+import { RoutinesTab } from './views/Routines';
 
 const queryClient = new QueryClient();
 
@@ -40,7 +41,9 @@ function App() {
               <Route path="/exercises">
                 <ExercisesTab />
               </Route>
-              <Route path="/routines">Routines</Route>
+              <Route path="/routines">
+                <RoutinesTab />
+              </Route>
               <Route path="/settings">Settings</Route>
               <Route exact path="/">
                 <Redirect to="/daily" />
