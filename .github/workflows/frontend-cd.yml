@@ -9,30 +9,30 @@ on:
       - master
 
 jobs:
-  check-changes:
-    runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.diff.outputs.changed }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - id: diff
-        name: check diff
-        run: |
-          diff=$(git diff origin/${GITHUB_BASE_REF} -- packages/frontend)
-          if [ -z "$diff" ]
-          then
-            echo "no changes"
-            echo "::set-output name=changed::false"
-          else
-            echo "changes detected"
-            echo "::set-output name=changed::true"
-          fi
+  # check-changes:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     changed: ${{ steps.diff.outputs.changed }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+  #     - id: diff
+  #       name: check diff
+  #       run: |
+  #         diff=$(git diff origin/${GITHUB_REF} -- packages/frontend)
+  #         if [ -z "$diff" ]
+  #         then
+  #           echo "no changes"
+  #           echo "::set-output name=changed::false"
+  #         else
+  #           echo "changes detected"
+  #           echo "::set-output name=changed::true"
+  #         fi
 
   deploy:
-    needs: check-changes
-    if: needs.check-changes.outputs.changed == 'true'
+    # needs: check-changes
+    # if: needs.check-changes.outputs.changed == 'true'
     runs-on: ubuntu-latest
 
     strategy:
