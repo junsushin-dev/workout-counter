@@ -21,7 +21,7 @@ export class RoutineController {
   }
 
   @Get(':id')
-  async find(id) {
+  async find(@Param('id') id: string) {
     const routine = await this.routineService.findOne(id);
 
     return this.routineService.convertToGetRoutineDTO(routine);
