@@ -70,7 +70,7 @@ function Workout({ date, workout }: IProps) {
   const handleArrowClick = (offset: number) => {
     const newCount = Math.min(Math.max(0, doneCount + offset), exerciseCount);
     setDoneCount(newCount);
-    updateDoneCount(id, date, newCount);
+    updateDoneCount(id, newCount);
   };
 
   return (
