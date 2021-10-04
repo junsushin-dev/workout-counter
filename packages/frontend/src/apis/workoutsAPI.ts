@@ -10,13 +10,12 @@ export const getWorkouts = async (date: Date): Promise<IWorkout[]> => {
   return workouts;
 };
 
-export const updateDoneCount = async (id: number, date: Date, doneCount: number): Promise<void> => {
-  const body = new URLSearchParams();
-  body.set('count', doneCount.toString());
-
+export const updateDoneCount = async (id: number, doneCount: number): Promise<void> => {
   const updatedWorkout = await customFetch(`/api/workouts/${id}`, {
     method: 'PATCH',
-    body,
+    body: JSON.stringify({
+      count: doneCount,
+    }),
   });
 
   return updatedWorkout;
