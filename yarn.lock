@@ -8296,7 +8296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-simple-import-sort@npm:*, eslint-plugin-simple-import-sort@npm:^7.0.0":
+"eslint-plugin-simple-import-sort@npm:^7.0.0":
   version: 7.0.0
   resolution: "eslint-plugin-simple-import-sort@npm:7.0.0"
   peerDependencies:
@@ -9176,7 +9176,7 @@ __metadata:
     eslint-plugin-simple-import-sort: ^7.0.0
     eslint-plugin-testing-library: ^4.1.1
     fontsource-roboto: ^4.0.0
-    immer: ^8.0.1
+    immer: ^9.0.12
     ini: ^1.3.6
     node-notifier: ^8.0.1
     react: ^17.0.1
@@ -10151,10 +10151,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"immer@npm:^8.0.1":
-  version: 8.0.4
-  resolution: "immer@npm:8.0.4"
-  checksum: 047d4af1c6d9dbba3ecbcf39aed9fa2f5323f80205c0618085d25a981d061353f4417b53fad95c71bd834eb9aa9ffdc2db53c7aa7726736b80bf1ae5f206eca7
+"immer@npm:^9.0.12":
+  version: 9.0.12
+  resolution: "immer@npm:9.0.12"
+  checksum: 347c2c119dcef964c8f051961b6554c8522894b875b7cef9b55a4d0807bb9adc12a652d8680f364c54204034720f44f5efa94ca19b1de0d1879874ee8c5e66a0
   languageName: node
   linkType: hard
 
